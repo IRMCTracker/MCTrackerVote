@@ -13,7 +13,12 @@ commands:
     aliases:
       - tracker
 
+  vote:
+    description: Vote command
+      usage: /<command>
+
 permissions:
   mctracker.*:
     children:
       mctracker.commands.reload: true
+      mctracker.commands.vote: true

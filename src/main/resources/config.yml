@@ -8,5 +8,10 @@ reward_commands:
   - "exampleCommand1 {player}"
   - "exampleGiveFood {player} 64"
 
+vote_command_message:
+  - "Vote for our server on"
+  - "your_servers_vote_link on https://mctracker.ir"
+  - "and get cool rewars :D"
+
 # Player vote check cycle in minutes [ DON'T TOUCH IF YOU DON'T KNOW WHAT YOU'RE DOING ]
 cycle: 5
