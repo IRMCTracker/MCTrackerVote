@@ -1,0 +1,12 @@
+# You can get your server id from IRMCTracker discord through ticket or our public API
+server_id: 0
+
+# Commands that will get executed on player vote [ BUNGEE COMMANDS ARE NOT SUPPORTED ]
+# PlaceHolder:
+#   - {player} = Player name
+reward_commands:
+  - "exampleCommand1 {player}"
+  - "exampleGiveFood {player} 64"
+
+# Player vote check cycle in minutes [ DON'T TOUCH IF YOU DON'T KNOW WHAT YOU'RE DOING ]
+interval: 5
