@@ -9,4 +9,4 @@ reward_commands:
   - "exampleGiveFood {player} 64"
 
 # Player vote check cycle in minutes [ DON'T TOUCH IF YOU DON'T KNOW WHAT YOU'RE DOING ]
-interval: 5
+cycle: 5
