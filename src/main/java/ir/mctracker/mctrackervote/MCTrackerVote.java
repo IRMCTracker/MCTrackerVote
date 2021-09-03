@@ -17,6 +17,8 @@ public final class MCTrackerVote extends JavaPlugin {
         new Run(this).handleSQL();
 
         new Run(this).registerCommands();
+
+        new Run(this).registerRunnable();
     }
 
     @Override
