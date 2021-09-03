@@ -12,3 +12,8 @@ commands:
     usage: /<command>
     aliases:
       - tracker
+
+permissions:
+  mctracker.*:
+    children:
+      mctracker.commands.reload: true
