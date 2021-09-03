@@ -2,6 +2,13 @@ name: MCTrackerVote
 version: '${project.version}'
 main: ir.mctracker.mctrackervote.MCTrackerVote
 api-version: 1.13
-authors: [ Alijk, Cipher ]
+authors: [ Cipher, Alijk ]
 description: https://mctracker.ir/ vote handling plugin
 website: https://mctracker.ir/
+
+commands:
+  mctracker:
+    description: Main command of the plugin
+    usage: /<command>
+    aliases:
+      - tracker
