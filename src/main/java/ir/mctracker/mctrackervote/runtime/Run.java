@@ -1,6 +1,7 @@
 package ir.mctracker.mctrackervote.runtime;
 
-import ir.mctracker.mctrackervote.commands.TrackerCommands;
+import ir.mctracker.mctrackervote.commands.TrackerCommand;
+import ir.mctracker.mctrackervote.commands.VoteCommand;
 import ir.mctracker.mctrackervote.config.YMLLoader;
 import ir.mctracker.mctrackervote.database.SQLDataSource;
 import ir.mctracker.mctrackervote.tasks.FetchAPI;
@@ -41,7 +42,8 @@ public class Run {
 
     public void registerCommands() {
         try {
-            javaPlugin.getCommand("MCTracker").setExecutor(new TrackerCommands());
+            javaPlugin.getCommand("MCTracker").setExecutor(new TrackerCommand());
+            javaPlugin.getCommand("Vote").setExecutor(new VoteCommand());
             Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &bRegistering commands"));
         } catch (Exception e) {
             Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &bRegistering commands"));
