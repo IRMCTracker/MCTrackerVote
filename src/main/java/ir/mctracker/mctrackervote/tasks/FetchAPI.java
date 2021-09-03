@@ -21,7 +21,7 @@ public class FetchAPI extends BukkitRunnable {
         try {
             int server_id = YMLLoader.getConfig().getInt("server_id");
             if (server_id == 0) {
-                Bukkit.getConsoleSender().sendMessage(Util.colorize(Util.prefix + "&bPlease set your server_id correctly in config.yml then do /mctracker reload"));
+                Bukkit.getConsoleSender().sendMessage(Util.colorize(Util.prefix + "&bPlease set your &cserver_id &bcorrectly in &cconfig.yml &bthen do &c/mctracker reload"));
                 return;
             }
             String json = Util.getJSON( "https://mctracker.ir/api/server/" + server_id + "/votes");
