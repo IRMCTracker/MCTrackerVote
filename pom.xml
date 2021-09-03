@@ -77,5 +77,10 @@
             <artifactId>HikariCP</artifactId>
             <version>5.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
     </dependencies>
 </project>
