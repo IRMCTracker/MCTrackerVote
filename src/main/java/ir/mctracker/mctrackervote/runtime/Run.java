@@ -3,6 +3,7 @@ package ir.mctracker.mctrackervote.runtime;
 import ir.mctracker.mctrackervote.commands.TrackerCommands;
 import ir.mctracker.mctrackervote.config.YMLLoader;
 import ir.mctracker.mctrackervote.database.SQLDataSource;
+import ir.mctracker.mctrackervote.tasks.FetchAPI;
 import ir.mctracker.mctrackervote.utilities.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -44,6 +45,17 @@ public class Run {
             Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMC&c] &bRegistering commands"));
         } catch (Exception e) {
             Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMC&c] &bRegistering commands"));
+            e.printStackTrace();
+        }
+    }
+
+    public void registerRunnable() {
+        try {
+            int ticks = YMLLoader.getConfig().getInt("interval") * 60 & 20;
+            new FetchAPI().runTaskTimer(javaPlugin, 0, ticks);
+            Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMC&c] &bRegistering runnable"));
+        } catch (Exception e) {
+            Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMC&c] &bRegistering runnable"));
             e.printStackTrace();
         }
     }
