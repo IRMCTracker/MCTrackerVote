@@ -8,6 +8,7 @@ reward_commands:
   - "exampleCommand1 {player}"
   - "exampleGiveFood {player} 64"
 
+# Will send this message on execution of /vote
 vote_command_message:
   - "Vote for our server on"
   - "your_servers_vote_link on https://mctracker.ir"
