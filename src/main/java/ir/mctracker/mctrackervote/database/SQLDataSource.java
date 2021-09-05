@@ -30,8 +30,10 @@ public class SQLDataSource {
         try (final Statement statement = ds.getConnection().createStatement()) {
             statement.execute("CREATE TABLE IF NOT EXISTS tracker_votes (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "uuid VARCHAR(16) NOT NULL," +
-                    "voted_at BIGINT NOT NULL" +
+                    "player_name VARCHAR(50) NOT NULL," +
+                    "voted_at BIGINT NOT NULL," +
+                    "total_votes BIGINT NOT NULL," +
+                    "redeemed BOOLEAN NOT NULL" +
                     ");");
 
         } catch (SQLException e) {
