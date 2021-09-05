@@ -14,5 +14,6 @@ vote_command_message:
   - "your_servers_vote_link on https://mctracker.ir"
   - "and get cool rewars :D"
 
+no_permission: "&c&lMC&b&lVote >> "
 # Player vote check cycle in minutes [ DON'T TOUCH IF YOU DON'T KNOW WHAT YOU'RE DOING ]
 cycle: 5

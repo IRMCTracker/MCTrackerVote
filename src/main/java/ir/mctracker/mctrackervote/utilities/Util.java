@@ -12,6 +12,7 @@ import java.net.URL;
 public class Util {
 
     public static String prefix = "&c&lMC&b&lVote >> ";
+
     public static String colorize(String msg) {
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
@@ -41,7 +42,6 @@ public class Util {
                 try {
                     con.disconnect();
                 } catch (Exception ex) {
-                    ex.printStackTrace();
                 }
             }
         }
