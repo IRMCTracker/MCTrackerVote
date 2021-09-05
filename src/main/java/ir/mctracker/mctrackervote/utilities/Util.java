@@ -1,5 +1,6 @@
 package ir.mctracker.mctrackervote.utilities;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -40,9 +41,7 @@ public class Util {
             if (con != null) {
                 try {
                     con.disconnect();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+                } catch (Exception ex) {}
             }
         }
         return null;
