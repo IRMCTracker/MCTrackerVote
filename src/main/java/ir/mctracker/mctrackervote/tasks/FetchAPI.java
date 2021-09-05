@@ -1,11 +1,10 @@
 package ir.mctracker.mctrackervote.tasks;
 
-import ir.mctracker.mctrackervote.MCTrackerVote;
 import ir.mctracker.mctrackervote.config.YMLLoader;
 import ir.mctracker.mctrackervote.database.Query;
+import ir.mctracker.mctrackervote.runtime.Run;
 import ir.mctracker.mctrackervote.utilities.Util;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,7 +12,6 @@ import org.json.JSONObject;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class FetchAPI extends BukkitRunnable {
     @Override
@@ -24,29 +22,32 @@ public class FetchAPI extends BukkitRunnable {
                 Bukkit.getConsoleSender().sendMessage(Util.colorize(Util.prefix + "&bPlease set your &cserver_id &bcorrectly in &cconfig.yml &bthen do &c/mctracker reload"));
                 return;
             }
-            String json = Util.getJSON( "https://mctracker.ir/api/server/" + server_id + "/votes");
+            String json = Util.getJSON("https://mctracker.ir/api/server/" + server_id + "/votes");
             JSONArray res = new JSONArray(json);
 
-            final int n = res.length();
-            for (int i = 0; i < n; ++i) {
+            Query.executeQuery("DELETE FROM tracker_votes;");
+            System.out.println("flushing");
+
+            for (int i = 0; i < res.length(); ++i) {
                 JSONObject user = res.getJSONObject(i);
 
-                Player player = Bukkit.getServer().getPlayer(user.getString("username"));
-                if(player == null) {
-                    continue;
-                }
-                ResultSet resultSet = Query.getResult("SELECT * FROM tracker_votes WHERE uuid = '" + player.getUniqueId());
-                if (!(resultSet.next())) {
-                    List<String> commands = YMLLoader.getConfig().getStringList("reward_commands");
-                    for (String s : commands) {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), s.replace("{player}", player.getName()));
-                    }
+                String username = user.getString("username");
+                int vote_at = user.getInt("voted_at");
+                int total_vote = user.getInt("total_votes");
 
-                    Query.executeQuery("INSERT INTO tracker_votes (uuid, voted_at) VALUES ('" + player.getUniqueId() + "', '" + user.getInt("voted_at") + "')");
+                ResultSet resultSet = Query.getResult("SELECT * FROM tracker_votes WHERE username = '" + username + "' AND timestamp = " + vote_at + "");
+                if (!(resultSet.next())) {
+                    Query.executeQuery("INSERT INTO tracker_votes (player_name, voted_at, total_votes, redeemed) VALUES ('" + username + "', " + vote_at + ", " + total_vote + ", false)");
+                }
+                System.out.println("adding");
+
+                if (vote_at - System.currentTimeMillis() > ((60 * 60) * 24)) {
+                    Query.executeQuery("DELETE FROM tracker_votes WHERE username='" + username + "';");
                 }
             }
         } catch (JSONException | SQLException e) {
-            e.printStackTrace();
+            Bukkit.getConsoleSender().sendMessage(Util.colorize(Util.prefix + "&cRequest failed please check your network connection"));
+            Bukkit.getConsoleSender().sendMessage(Util.colorize(Util.prefix + "&cIf problem is consistent, contact us in discord"));
         }
     }
 }
