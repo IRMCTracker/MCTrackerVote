@@ -20,8 +20,11 @@ public class VoteCommand implements CommandExecutor {
                 for (String s : message) {
                     sender.sendMessage(Util.colorize(s));
                 }
+                return true;
+            } else {
+                sender.sendMessage(Util.colorize("You don't have permission"));
+                return true;
             }
-
         }
 
         return true;
