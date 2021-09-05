@@ -57,7 +57,7 @@ public class Run {
             int ticks = YMLLoader.getConfig().getInt("cycle") * 60 * 20;
 
             new FetchAPI().runTaskTimerAsynchronously(javaPlugin, 0, ticks);
-            new RedeemRewards().runTaskTimer(javaPlugin, 0, ticks/4);
+            new RedeemRewards().runTaskTimer(javaPlugin, 0, ticks / 4);
             Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &bRegistering runnable"));
         } catch (Exception e) {
             Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &bRegistering runnable"));

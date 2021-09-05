@@ -27,7 +27,7 @@ public class Query {
         ResultSet result = null;
         try {
             PreparedStatement statement = SQLDataSource.getConnection().prepareStatement(query);
-            try  {
+            try {
                 final ResultSet resultSet = statement.executeQuery();
                 result = resultSet;
             } catch (Exception e) {

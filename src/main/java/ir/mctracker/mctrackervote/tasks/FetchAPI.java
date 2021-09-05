@@ -2,7 +2,6 @@ package ir.mctracker.mctrackervote.tasks;
 
 import ir.mctracker.mctrackervote.config.YMLLoader;
 import ir.mctracker.mctrackervote.database.Query;
-import ir.mctracker.mctrackervote.runtime.Run;
 import ir.mctracker.mctrackervote.utilities.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;

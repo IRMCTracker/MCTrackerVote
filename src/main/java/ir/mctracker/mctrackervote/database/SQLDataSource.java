@@ -41,7 +41,8 @@ public class SQLDataSource {
         }
     }
 
-    private SQLDataSource() { }
+    private SQLDataSource() {
+    }
 
     public static Connection getConnection() throws SQLException {
         return connection;

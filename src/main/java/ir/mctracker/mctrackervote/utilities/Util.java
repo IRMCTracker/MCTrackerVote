@@ -1,6 +1,5 @@
 package ir.mctracker.mctrackervote.utilities;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -13,6 +12,7 @@ import java.net.URL;
 public class Util {
 
     public static String prefix = "&c&lMC&b&lVote >> ";
+
     public static String colorize(String msg) {
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
@@ -41,7 +41,8 @@ public class Util {
             if (con != null) {
                 try {
                     con.disconnect();
-                } catch (Exception ex) {}
+                } catch (Exception ex) {
+                }
             }
         }
         return null;

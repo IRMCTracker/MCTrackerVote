@@ -11,7 +11,8 @@ public class TrackerCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (args.length == 0) {
-            sender.sendMessage(Util.colorize( Util.prefix + "&bMCTrackerVote plugin By: &cCipher&b, &cAlijk"));
+            sender.sendMessage(Util.colorize(Util.prefix + "&bMCTrackerVote plugin By: &cCipher&b, &cAlijk"));
+            sender.sendMessage(Util.colorize(Util.prefix + "&bWebsite: &chttps://mctracker.ir"));
             return true;
         }
 
@@ -24,7 +25,6 @@ public class TrackerCommand implements CommandExecutor {
                 }
             }
         }
-
         return true;
     }
 }
