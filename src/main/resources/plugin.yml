@@ -12,10 +12,9 @@ commands:
     usage: /<command>
     aliases:
       - tracker
-
   vote:
     description: Vote command
-      usage: /<command>
+    usage: /<command>
 
 permissions:
   mctracker.*:
