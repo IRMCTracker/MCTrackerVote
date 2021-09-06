@@ -11,9 +11,9 @@ reward_commands:
 # Will send this message on execution of /vote
 vote_command_message:
   - "Vote for our server on"
-  - "your_servers_vote_link on https://mctracker.ir"
-  - "and get cool rewars :D"
+  - "https://mctracker.ir"
+  - "and get cool rewards :D"
 
-no_permission: "&c&lMC&b&lVote >> "
+no_permission: "&c&lMC&b&lVote >> insufficient permissions"
 # Player vote check cycle in minutes [ DON'T TOUCH IF YOU DON'T KNOW WHAT YOU'RE DOING ]
 cycle: 5
