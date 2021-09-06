@@ -24,9 +24,6 @@ public class FetchAPI extends BukkitRunnable {
             String json = Util.getJSON("https://mctracker.ir/api/server/" + server_id + "/votes");
             JSONArray res = new JSONArray(json);
 
-            Query.executeQuery("DELETE FROM tracker_votes;");
-            System.out.println("flushing");
-
             for (int i = 0; i < res.length(); ++i) {
                 JSONObject user = res.getJSONObject(i);
 
@@ -34,11 +31,10 @@ public class FetchAPI extends BukkitRunnable {
                 int vote_at = user.getInt("voted_at");
                 int total_vote = user.getInt("total_votes");
 
-                ResultSet resultSet = Query.getResult("SELECT * FROM tracker_votes WHERE username = '" + username + "' AND timestamp = " + vote_at + "");
+                ResultSet resultSet = Query.getResult("SELECT * FROM tracker_votes WHERE username = '" + username + "' AND voted_at = " + vote_at + "");
                 if (!(resultSet.next())) {
-                    Query.executeQuery("INSERT INTO tracker_votes (player_name, voted_at, total_votes, redeemed) VALUES ('" + username + "', " + vote_at + ", " + total_vote + ", false)");
+                    Query.executeQuery("INSERT INTO tracker_votes (username, voted_at, total_votes, redeemed) VALUES ('" + username + "', " + vote_at + ", " + total_vote + ", false)");
                 }
-                System.out.println("adding");
 
                 if (vote_at - System.currentTimeMillis() > ((60 * 60) * 24)) {
                     Query.executeQuery("DELETE FROM tracker_votes WHERE username='" + username + "';");
