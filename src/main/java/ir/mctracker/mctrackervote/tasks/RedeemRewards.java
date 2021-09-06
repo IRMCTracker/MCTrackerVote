@@ -16,15 +16,14 @@ public class RedeemRewards extends BukkitRunnable {
         try {
             ResultSet resultSet = Query.getResult("SELECT * FROM tracker_votes WHERE redeemed = false;");
             while (resultSet.next()) {
-                System.out.println(resultSet.getString("player_name"));
-                Player player = Bukkit.getPlayer(resultSet.getString("player_name"));
+                Player player = Bukkit.getPlayer(resultSet.getString("username"));
                 if (!(player == null)) {
 
                     List<String> commands = YMLLoader.getConfig().getStringList("reward_commands");
                     for (String s : commands) {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), s.replace("{player}", player.getName()));
                     }
-                    Query.executeQuery("UPDATE tracker_votes WHERE username = '" + resultSet.getString("username") + "' SET redeemed = true;");
+                    Query.executeQuery("UPDATE tracker_votes SET redeemed = true WHERE username = '" + resultSet.getString("username") + "'");
                 }
             }
         } catch (SQLException e) {
