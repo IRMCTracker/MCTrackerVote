@@ -28,9 +28,8 @@ public class Query {
         try {
             PreparedStatement statement = SQLDataSource.getConnection().prepareStatement(query);
             try {
-                final ResultSet resultSet = statement.executeQuery();
-                result = resultSet;
-            } catch (Exception e) {
+                result = statement.executeQuery();
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         } catch (SQLException e) {

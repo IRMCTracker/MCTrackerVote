@@ -10,9 +10,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Util {
-
-    public static String prefix = "&c&lMC&b&lVote >> ";
-
     public static String colorize(String msg) {
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
@@ -33,16 +30,11 @@ public class Util {
             br.close();
             return sb.toString();
 
-        } catch (MalformedURLException ex) {
-            ex.printStackTrace();
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
             if (con != null) {
-                try {
-                    con.disconnect();
-                } catch (Exception ex) {
-                }
+                con.disconnect();
             }
         }
         return null;

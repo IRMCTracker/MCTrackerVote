@@ -1,19 +1,34 @@
-# You can get your server id from IRMCTracker discord through ticket or our public API
+# -----------------------------
+#        MCTrackerVote
+# -----------------------------
+#  =  Perms/Commands =
+# - /vote [ mctracker.commands.vote ]
+# -----------------------------
+
+# You can get your server id from IRMCTracker discord through ticket or our public API (If you know about it)
 server_id: 0
 
-# Commands that will get executed on player vote [ BUNGEE COMMANDS ARE NOT SUPPORTED ]
-# PlaceHolder:
+# Main plugin prefix
+prefix: "&c&lMC&b&lVote &9&l»&r "
+
+# Commands that will get executed on player vote [ BUNGEE COMMANDS ARE NOT SUPPORTED FOR NOW ]
+# Placeholders:
 #   - {player} = Player name
 reward_commands:
-  - "exampleCommand1 {player}"
-  - "exampleGiveFood {player} 64"
+  - "me Player {player} be server vote dad!"
+  - "give {player} apple 1"
 
 # Will send this message on execution of /vote
-vote_command_message:
-  - "Vote for our server on"
-  - "https://mctracker.ir"
-  - "and get cool rewards :D"
+# Placeholders:
+# - {vote_url} = Your unique vote URL based on  server_id that you set above
+vote_messages:
+  - "&bBaraye vote dadan be server kafie ke vared link zir beshid"
+  - "&bhar 24 saat username khodetoon ro vared konid!"
+  - "&cAddress: &c&l{vote_url}"
+  - "Ta jayze daryaft konid"
 
+# No permission message
 no_permission: "&c&lMC&b&lVote >> insufficient permissions"
+
 # Player vote check cycle in minutes [ DON'T TOUCH IF YOU DON'T KNOW WHAT YOU'RE DOING ]
-cycle: 5
+cycle: 2

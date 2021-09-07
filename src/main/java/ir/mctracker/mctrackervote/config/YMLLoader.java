@@ -15,8 +15,9 @@ public class YMLLoader {
     public static void createConfig() throws IOException, InvalidConfigurationException {
         ConfigFile = new File(MCTrackerVote.getInst().getDataFolder(), "config.yml");
         if (!ConfigFile.exists()) {
-            ConfigFile.getParentFile().mkdirs();
-            MCTrackerVote.getInst().saveResource("config.yml", false);
+            if (ConfigFile.getParentFile().mkdirs()) {
+                MCTrackerVote.getInst().saveResource("config.yml", false);
+            }
         }
         Config = new YamlConfiguration();
         Config.load(ConfigFile);

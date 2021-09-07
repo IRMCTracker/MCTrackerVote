@@ -1,5 +1,6 @@
 package ir.mctracker.mctrackervote.commands;
 
+import ir.mctracker.mctrackervote.config.Config;
 import ir.mctracker.mctrackervote.config.YMLLoader;
 import ir.mctracker.mctrackervote.utilities.Util;
 import org.bukkit.command.Command;
@@ -14,13 +15,12 @@ public class VoteCommand implements CommandExecutor {
 
         if (args.length == 0) {
             if (sender.hasPermission("mctracker.commands.vote")) {
-                List<String> message = YMLLoader.getConfig().getStringList("vote_command_message");
-                for (String s : message) {
+                for (String s : Config.VOTE_MESSAGES) {
                     sender.sendMessage(Util.colorize(s));
                 }
                 return true;
             } else {
-                sender.sendMessage(Util.colorize(YMLLoader.getConfig().getString("no_permission")));
+                sender.sendMessage(Config.NO_PERMISSION);
                 return true;
             }
         }

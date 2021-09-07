@@ -2,6 +2,7 @@ package ir.mctracker.mctrackervote.runtime;
 
 import ir.mctracker.mctrackervote.commands.TrackerCommand;
 import ir.mctracker.mctrackervote.commands.VoteCommand;
+import ir.mctracker.mctrackervote.config.Config;
 import ir.mctracker.mctrackervote.config.YMLLoader;
 import ir.mctracker.mctrackervote.database.SQLDataSource;
 import ir.mctracker.mctrackervote.tasks.FetchAPI;
@@ -42,26 +43,22 @@ public class Run {
     }
 
     public void registerCommands() {
-        try {
-            javaPlugin.getCommand("MCTracker").setExecutor(new TrackerCommand());
-            javaPlugin.getCommand("Vote").setExecutor(new VoteCommand());
-            Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &bRegistering commands"));
-        } catch (Exception e) {
-            Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &bRegistering commands"));
-            e.printStackTrace();
-        }
+        // Register plugin commands
+        javaPlugin.getCommand("MCTracker").setExecutor(new TrackerCommand());
+        javaPlugin.getCommand("Vote").setExecutor(new VoteCommand());
+
+        // Log commands registration in console
+        Bukkit.getConsoleSender().sendMessage(Util.colorize(Config.PREFIX + "&bRegistering commands"));
     }
 
     public void registerRunnable() {
-        try {
-            int ticks = YMLLoader.getConfig().getInt("cycle") * 60 * 20;
+        int ticks = Config.CYCLE * 60 * 20;
 
-            new FetchAPI().runTaskTimerAsynchronously(javaPlugin, 0, ticks);
-            new RedeemRewards().runTaskTimer(javaPlugin, 0, ticks / 4);
-            Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &bRegistering runnable"));
-        } catch (Exception e) {
-            Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &bRegistering runnable"));
-            e.printStackTrace();
-        }
+        // Startup runnables
+        new FetchAPI().runTaskTimerAsynchronously(javaPlugin, 0, ticks);
+        new RedeemRewards().runTaskTimer(javaPlugin, 0, ticks / 4);
+
+        // Log commands registration in console
+        Bukkit.getConsoleSender().sendMessage(Util.colorize( Config.PREFIX + "&bRegistering runnable"));
     }
 }
