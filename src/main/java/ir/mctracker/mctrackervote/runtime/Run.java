@@ -25,9 +25,10 @@ public class Run {
     public void loadConfig() {
         try {
             YMLLoader.createConfig();
-            Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &bLoading config"));
+            Config.initConfigValues();
+            Util.sendToConsole("&bLoading config");
         } catch (IOException | InvalidConfigurationException e) {
-            Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &cLoading config"));
+            Util.sendToConsole("Failed to load config");
             e.printStackTrace();
         }
     }
@@ -35,9 +36,9 @@ public class Run {
     public void handleSQL() {
         try {
             SQLDataSource.SQLite();
-            Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &bConnecting to database"));
+            Util.sendToConsole("&bConnecting to database");
         } catch (SQLException | IOException e) {
-            Bukkit.getConsoleSender().sendMessage(Util.colorize("&c[&b&lMCTracker&c] &cConnecting to database"));
+            Util.sendToConsole("&cFailed to connect to database");
             e.printStackTrace();
         }
     }
@@ -48,7 +49,7 @@ public class Run {
         javaPlugin.getCommand("Vote").setExecutor(new VoteCommand());
 
         // Log commands registration in console
-        Bukkit.getConsoleSender().sendMessage(Util.colorize(Config.PREFIX + "&bRegistering commands"));
+        Util.sendToConsole("&bRegistering commands");
     }
 
     public void registerRunnable() {
@@ -59,6 +60,6 @@ public class Run {
         new RedeemRewards().runTaskTimer(javaPlugin, 0, ticks / 4);
 
         // Log commands registration in console
-        Bukkit.getConsoleSender().sendMessage(Util.colorize( Config.PREFIX + "&bRegistering runnable"));
+        Util.sendToConsole("&bRegistering runnable");
     }
 }

@@ -2,6 +2,7 @@ package ir.mctracker.mctrackervote.database;
 
 import ir.mctracker.mctrackervote.MCTrackerVote;
 import ir.mctracker.mctrackervote.database.models.Vote;
+import ir.mctracker.mctrackervote.utilities.Util;
 import org.bukkit.Bukkit;
 
 import java.sql.*;
@@ -23,7 +24,8 @@ public class TrackerDB {
     }
 
     public static void createTables() {
-        try (final Statement statement = SQLDataSource.getConnection().createStatement()) {
+        try {
+            final Statement statement = SQLDataSource.getConnection().createStatement();
             statement.execute(Queries.CREATE_VOTES_TABLE);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -74,12 +76,11 @@ public class TrackerDB {
     }
 
     public static List<Vote> getUnredeemedVotes() {
-        List<Vote> votes = null;
-        try (Connection con = SQLDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement( Queries.SELECT_UNREDEEMED_VOTES );
-             ResultSet rs = pst.executeQuery()) {
-
-            votes = new ArrayList<>();
+        List<Vote> votes = new ArrayList<>();
+        try {
+            Connection con = SQLDataSource.getConnection();
+            PreparedStatement pst = con.prepareStatement( Queries.SELECT_UNREDEEMED_VOTES );
+            ResultSet rs = pst.executeQuery();
 
             Vote vote;
             while ( rs.next() ) {
@@ -99,10 +100,11 @@ public class TrackerDB {
     }
 
     public static List<Vote> getAllVotes() {
-        List<Vote> votes = null;
-        try (Connection con = SQLDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement( Queries.SELECT_ALL_VOTES );
-             ResultSet rs = pst.executeQuery()) {
+        List<Vote> votes = new ArrayList<>();
+        try {
+            Connection con = SQLDataSource.getConnection();
+            PreparedStatement pst = con.prepareStatement( Queries.SELECT_ALL_VOTES );
+            ResultSet rs = pst.executeQuery();
 
             votes = new ArrayList<>();
 
@@ -127,7 +129,8 @@ public class TrackerDB {
     public static Vote getVote(String username, Integer votedAt) {
         Vote vote = null;
 
-        try (Connection con = SQLDataSource.getConnection()) {
+        try {
+            Connection con = SQLDataSource.getConnection();
             PreparedStatement pst = con.prepareStatement( Queries.SELECT_VOTE );
 
             pst.setString(1, username);
@@ -150,6 +153,7 @@ public class TrackerDB {
     }
 
     public static void closeConnection() {
+        Util.sendToConsole("&cClosing DB Connection");
         try {
             SQLDataSource.getConnection().close();
         } catch (SQLException e) {

@@ -9,29 +9,28 @@ import java.io.File;
 import java.io.IOException;
 
 public class YMLLoader {
-    private static File ConfigFile;
-    private static FileConfiguration Config;
+    private static File configFile;
+    private static FileConfiguration config;
 
     public static void createConfig() throws IOException, InvalidConfigurationException {
-        ConfigFile = new File(MCTrackerVote.getInst().getDataFolder(), "config.yml");
-        if (!ConfigFile.exists()) {
-            if (ConfigFile.getParentFile().mkdirs()) {
-                MCTrackerVote.getInst().saveResource("config.yml", false);
-            }
+        configFile = new File(MCTrackerVote.getInst().getDataFolder(), "config.yml");
+        if (!configFile.exists()) {
+            configFile.getParentFile().mkdirs();
+            MCTrackerVote.getInst().saveResource("config.yml", false);
         }
-        Config = new YamlConfiguration();
-        Config.load(ConfigFile);
+        config = new YamlConfiguration();
+        config.load(configFile);
     }
 
     public static void reloadConfig() {
         try {
-            Config.load(ConfigFile);
+            config.load(configFile);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
     }
 
     public static FileConfiguration getConfig() {
-        return Config;
+        return config;
     }
 }
