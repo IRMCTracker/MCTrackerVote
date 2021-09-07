@@ -2,7 +2,8 @@ package ir.mctracker.mctrackervote.tasks;
 
 import ir.mctracker.mctrackervote.config.Config;
 import ir.mctracker.mctrackervote.config.YMLLoader;
-import ir.mctracker.mctrackervote.database.Query;
+import ir.mctracker.mctrackervote.database.TrackerDB;
+import ir.mctracker.mctrackervote.database.models.Vote;
 import ir.mctracker.mctrackervote.utilities.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -12,40 +13,37 @@ import org.json.JSONObject;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
 
 public class FetchAPI extends BukkitRunnable {
     @Override
     public void run() {
-        try {
-            int server_id = YMLLoader.getConfig().getInt("server_id");
-            if (server_id == 0) {
+            int serverId = Config.SERVER_ID;
+            if (serverId == 0) {
                 Bukkit.getConsoleSender().sendMessage(Util.colorize(Config.PREFIX + "&bPlease set your &cserver_id &bcorrectly in &cconfig.yml &bthen do &c/mctracker reload"));
-                return;
+                cancel();
             }
-            String json = Util.getJSON("https://mctracker.ir/api/server/" + server_id + "/votes");
-            JSONArray res = new JSONArray(json);
 
-            for (int i = 0; i < res.length(); ++i) {
-                JSONObject user = res.getJSONObject(i);
+            JSONArray apiResponse = null;
+            try {
+                apiResponse = new JSONArray(Util.getJSON(Config.API_ENDPOINT));
+            } catch (NullPointerException | JSONException ignored) {
+                Bukkit.getConsoleSender().sendMessage(Util.colorize(Config.PREFIX + "&cFailed to fetch API, Please check your network connectivity!"));
+            }
 
-                String username = user.getString("username");
-                int vote_at = user.getInt("voted_at");
-                int total_vote = user.getInt("total_votes");
+            if (apiResponse != null) {
+                for (int i = 0; i < apiResponse.length(); ++i) {
+                    Vote vote = new Vote(apiResponse.getJSONObject(i));
 
-                ResultSet resultSet = Query.getResult("SELECT * FROM tracker_votes WHERE username = '" + username + "' AND voted_at = " + vote_at + "");
-                if (!(resultSet.next())) {
-                    Query.executeQuery("INSERT INTO tracker_votes (username, voted_at, total_votes, redeemed) VALUES ('" + username + "', " + vote_at + ", " + total_vote + ", false)");
-                }
+                    boolean exists = vote.existsInDB();
 
-                if (vote_at - System.currentTimeMillis() > ((60 * 60) * 24)) {
-                    Query.executeQuery("DELETE FROM tracker_votes WHERE username='" + username + "';");
+                    if (!exists) {
+                        vote.insertToDB();
+                    }
+
+                    if (vote.isVoteExpired()) {
+                        vote.deleteFromDB();
+                    }
                 }
             }
-        } catch (JSONException | SQLException e) {
-            Bukkit.getConsoleSender().sendMessage(Util.colorize(Config.PREFIX + "&cRequest failed please check your network connection"));
-            Bukkit.getConsoleSender().sendMessage(Util.colorize(Config.PREFIX + "&cIf problem is consistent, contact us in discord"));
-        }
     }
 }

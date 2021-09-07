@@ -1,6 +1,6 @@
 package ir.mctracker.mctrackervote;
 
-import ir.mctracker.mctrackervote.database.Query;
+import ir.mctracker.mctrackervote.database.TrackerDB;
 import ir.mctracker.mctrackervote.runtime.Run;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,7 +25,7 @@ public final class MCTrackerVote extends JavaPlugin {
     public void onDisable() {
         plugin = null;
 
-        Query.closeConnection();
+        TrackerDB.closeConnection();
     }
 
     public static Plugin getInst() {
