@@ -20,7 +20,7 @@ public class RedeemRewards extends BukkitRunnable {
             Player player = Bukkit.getPlayer(vote.getUsername());
             if (!(player == null)) {
                 for (String s : Config.REWARD_COMMANDS) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), s.replace("{player}", player.getName()).replace("{vote_url}", Config.VOTE_URL) );
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), s.replace("{player}", player.getName()));
                 }
                 TrackerDB.redeemVote(vote.getUsername());
             }

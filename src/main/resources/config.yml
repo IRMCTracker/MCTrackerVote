@@ -9,7 +9,7 @@
 server_id: 0
 
 # Main plugin prefix
-prefix: "&c&lMC&b&lVote &9&l»&r "
+prefix: "&c&lMC&b&lVote &c&l»&r "
 
 # Commands that will get executed on player vote [ BUNGEE COMMANDS ARE NOT SUPPORTED FOR NOW ]
 # Placeholders:
@@ -21,10 +21,12 @@ reward_commands:
 # Will send this message on execution of /vote
 # Placeholders:
 # - {vote_url} = Your unique vote URL based on  server_id that you set above
+# - {player} = Player name
 vote_messages:
+  - "&bSalam &9{player}"
   - "&bBaraye vote dadan be server kafie ke vared link zir beshid"
   - "&bhar 24 saat username khodetoon ro vared konid!"
-  - "&cAddress: &c&l{vote_url}"
+  - "&3Address: &3&l{vote_url}"
   - "Ta jayze daryaft konid"
 
 # No permission message

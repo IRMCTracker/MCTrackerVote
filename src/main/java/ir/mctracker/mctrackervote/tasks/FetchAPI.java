@@ -15,7 +15,7 @@ public class FetchAPI extends BukkitRunnable {
             JSONArray apiResponse = null;
 
             if (Config.SERVER_ID == 0) {
-                    Util.sendToConsole("&bPlease set your &cserver_id &bcorrectly in &cconfig.yml &bthen do a restart");
+                    Util.sendToConsole("&bPlease set your &cserver_id &bcorrectly in &cconfig.yml &bthen do /tracker reload");
                     doChecks = false;
             } else {
                     try {
