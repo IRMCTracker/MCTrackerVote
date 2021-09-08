@@ -25,6 +25,7 @@ public class YMLLoader {
     public static void reloadConfig() {
         try {
             config.load(configFile);
+            Config.initConfigValues();
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
