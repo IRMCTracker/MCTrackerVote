@@ -59,6 +59,7 @@ Tested MineCraft Version
 We're always here to solve your problems or convert your ideas into codes! You can create issues on our official Github Repo or contact us through our discord server
 
 ## Our Discord
+https://discord.gg/YScSMwTFZq
 <img src="https://discordapp.com/api/guilds/866287155641843722/widget.png?style=banner1" alt="Discord Banner 1"/>
 
 
