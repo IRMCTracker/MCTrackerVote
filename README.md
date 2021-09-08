@@ -6,7 +6,7 @@ IRMCTracker official plugin for handling player votes server-side
 
 Download the latest version from [releases](https://github.com/Alijkaz/MCTrackerVote/releases) or compile your own fork of plugin and put it in your server's ~/plugin folder 
 
-### Config
+## Config
 Don't forget to update your **server_id** in config.yml on first installation
 ```yaml
 # -----------------------------
@@ -46,7 +46,7 @@ no_permission: "&c&lMC&b&lVote >> insufficient permissions"
 # Player vote check cycle in minutes [ DON'T TOUCH IF YOU DON'T KNOW WHAT YOU'RE DOING ]
 cycle: 2
 ```
-### Before using the plugin
+## Before using the plugin
 Tested MineCraft Version
    - Paper 1.8.8 (Java 1.8 / Java 1.11)
    - Paper 1.12.2 (Java 1.8 / Java 1.11)
@@ -57,6 +57,10 @@ Tested MineCraft Version
 ## You have any issuess / suggestions??
 
 We're always here to solve your problems or convert your ideas into codes! You can create issues on our official Github Repo or contact us through our discord server
+
+## Our Discord
+<img src="https://discordapp.com/api/guilds/866287155641843722/widget.png?style=banner1" alt="Discord Banner 1"/>
+
 
 ## Contributing
 
