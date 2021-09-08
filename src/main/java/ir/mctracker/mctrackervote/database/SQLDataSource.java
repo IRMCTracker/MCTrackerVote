@@ -14,7 +14,9 @@ public class SQLDataSource {
     private static HikariDataSource ds;
     private static Connection connection;
 
-    public static void SQLite() throws SQLException, IOException {
+    public static void SQLite() throws SQLException, IOException, ClassNotFoundException {
+        Class.forName("org.sqlite.JDBC");
+
         File file = new File(MCTrackerVote.getInst().getDataFolder(), "data.db");
 
         if (!file.exists()) file.createNewFile();
@@ -24,6 +26,7 @@ public class SQLDataSource {
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+
         ds = new HikariDataSource(config);
         connection = ds.getConnection();
 

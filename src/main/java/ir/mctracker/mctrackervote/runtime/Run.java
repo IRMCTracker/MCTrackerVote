@@ -37,7 +37,7 @@ public class Run {
         try {
             SQLDataSource.SQLite();
             Util.sendToConsole("&bConnecting to database");
-        } catch (SQLException | IOException e) {
+        } catch (SQLException | ClassNotFoundException | IOException e) {
             Util.sendToConsole("&cFailed to connect to database");
             e.printStackTrace();
         }
