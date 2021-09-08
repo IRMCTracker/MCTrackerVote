@@ -67,4 +67,4 @@ We're always here to solve your problems or convert your ideas into codes! You c
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
+All rights are reserved and it is not Open Source or Free. You cannot modify or redistribute this code without explicit permission from the copyright holder
