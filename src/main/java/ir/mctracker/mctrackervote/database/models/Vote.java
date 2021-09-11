@@ -84,9 +84,7 @@ public class Vote {
                         if (!this.existsInDB())
                                 return false;
 
-                        Vote vote = this.getFromDB();
-
-                        return vote.getRedeemed();
+                        return this.getFromDB().getRedeemed();
         }
 
         public void deleteFromDB() {
