@@ -144,6 +144,7 @@ public class TrackerDB {
                 vote.setUsername(rs.getString("username"));
                 vote.setVotedAt(rs.getInt("voted_at"));
                 vote.setTotalVotes(rs.getInt("total_votes"));
+                vote.setRedeemed(rs.getBoolean("redeemed"));
             }
         } catch (SQLException exception) {
             exception.printStackTrace();

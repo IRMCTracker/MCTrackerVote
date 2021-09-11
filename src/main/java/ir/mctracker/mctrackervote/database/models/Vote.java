@@ -7,7 +7,7 @@ import org.json.JSONObject;
 public class Vote {
         private String username;
         private int votedAt, totalVotes;
-
+        private boolean redeemed;
 
         public Vote() {
 
@@ -43,6 +43,10 @@ public class Vote {
                 this.votedAt = votedAt;
         }
 
+        public void setRedeemed(boolean redeemed) {
+                this.redeemed = redeemed;
+        }
+
         public int getTotalVotes() {
                 return totalVotes;
         }
@@ -50,6 +54,11 @@ public class Vote {
         public int getVotedAt() {
                 return votedAt;
         }
+
+        public boolean getRedeemed() {
+                return redeemed;
+        }
+
 
         public String getUsername() {
                 return username;
@@ -59,12 +68,25 @@ public class Vote {
         // METHODS
         //
 
+        public Vote getFromDB() {
+                return TrackerDB.getVote(this.username, this.votedAt);
+        }
+
         public boolean isVoteExpired() {
                 return this.votedAt - System.currentTimeMillis() > ((60 * 60) * 24);
         }
 
         public boolean existsInDB() {
-                return TrackerDB.getVote(this.username, this.votedAt) != null;
+                return this.getFromDB() != null;
+        }
+
+        public boolean isRedeemed() {
+                        if (!this.existsInDB())
+                                return false;
+
+                        Vote vote = this.getFromDB();
+
+                        return vote.getRedeemed();
         }
 
         public void deleteFromDB() {
