@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class TrackerCommand implements CommandExecutor {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -15,9 +16,7 @@ public class TrackerCommand implements CommandExecutor {
             sender.sendMessage(Util.colorize(Config.PREFIX + "&bMCTrackerVote plugin By: &cCipher&b, &cAlijk"));
             sender.sendMessage(Util.colorize(Config.PREFIX + "&bWebsite: &chttps://mctracker.ir"));
             return true;
-        }
-
-        else if (args.length == 1) {
+        } else if (args.length == 1) {
             if (args[0].equalsIgnoreCase("reload")) {
                 if (sender.hasPermission("mctracker.commands.reload")) {
                     YMLLoader.reloadConfig();
@@ -25,12 +24,12 @@ public class TrackerCommand implements CommandExecutor {
                     return true;
                 }
             }
-        }
-
-        else {
+        } else {
             sender.sendMessage(Util.colorize(Config.PREFIX + "Entered arg is not valid"));
             return true;
         }
+
         return true;
     }
+
 }

@@ -9,24 +9,25 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
 
 public class Util {
+
     public static String colorize(String msg) {
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
     public static void sendToConsole(String message) {
-        Bukkit.getConsoleSender().sendMessage(Config.PREFIX + Util.colorize( message));
+        Bukkit.getConsoleSender().sendMessage(Config.PREFIX + Util.colorize(message));
     }
 
     public static String getJSON(String url) {
+
         HttpsURLConnection con = null;
+
         try {
             BufferedReader br;
-
             try {
                 URL u = new URL(url);
                 con = (HttpsURLConnection) u.openConnection();
@@ -38,9 +39,11 @@ public class Util {
 
             StringBuilder sb = new StringBuilder();
             String line;
+
             while ((line = br.readLine()) != null) {
                 sb.append(line + "\n");
             }
+
             br.close();
             return sb.toString();
 
@@ -51,6 +54,7 @@ public class Util {
                 con.disconnect();
             }
         }
+
         return null;
     }
 }

@@ -8,7 +8,6 @@ import ir.mctracker.mctrackervote.database.SQLDataSource;
 import ir.mctracker.mctrackervote.tasks.FetchAPI;
 import ir.mctracker.mctrackervote.tasks.RedeemRewards;
 import ir.mctracker.mctrackervote.utilities.Util;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -16,6 +15,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class Run {
+
     private JavaPlugin javaPlugin;
 
     public Run(JavaPlugin javaPlugin) {
@@ -23,6 +23,7 @@ public class Run {
     }
 
     public void loadConfig() {
+
         try {
             YMLLoader.createConfig();
             Config.initConfigValues();
@@ -31,9 +32,11 @@ public class Run {
             Util.sendToConsole("Failed to load config");
             e.printStackTrace();
         }
+
     }
 
     public void handleSQL() {
+
         try {
             SQLDataSource.SQLite();
             Util.sendToConsole("&bConnecting to database");
@@ -41,18 +44,22 @@ public class Run {
             Util.sendToConsole("&cFailed to connect to database");
             e.printStackTrace();
         }
+
     }
 
     public void registerCommands() {
+
         // Register plugin commands
         javaPlugin.getCommand("MCTracker").setExecutor(new TrackerCommand());
         javaPlugin.getCommand("Vote").setExecutor(new VoteCommand());
 
         // Log commands registration in console
         Util.sendToConsole("&bRegistering commands");
+
     }
 
     public void registerRunnable() {
+
         int ticks = Config.CYCLE * 60 * 20;
 
         // Startup runnables
@@ -61,5 +68,6 @@ public class Run {
 
         // Log commands registration in console
         Util.sendToConsole("&bRegistering runnable");
+
     }
 }

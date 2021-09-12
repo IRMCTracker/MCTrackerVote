@@ -1,97 +1,93 @@
 package ir.mctracker.mctrackervote.database.models;
 
 import ir.mctracker.mctrackervote.database.TrackerDB;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Vote {
-        private String username;
-        private int votedAt, totalVotes;
-        private boolean redeemed;
 
-        public Vote() {
+    private String username;
+    private int votedAt, totalVotes;
+    private boolean redeemed;
 
-        }
+    public Vote() {
 
-        public Vote(String username) {
-                this.username = username;
-        }
+    }
 
-        public Vote(String username, int votedAt) {
-                this(username);
-                this.votedAt = votedAt;
-        }
+    public Vote(String username) {
+        this.username = username;
+    }
 
-        public Vote(String username, int votedAt, int totalVotes) {
-                this(username, votedAt);
-                this.totalVotes = totalVotes;
-        }
+    public Vote(String username, int votedAt) {
+        this(username);
+        this.votedAt = votedAt;
+    }
 
-        public Vote(JSONObject jsonVote) {
-                this(jsonVote.getString("username"), jsonVote.getInt("voted_at"), jsonVote.getInt("total_votes"));
-        }
+    public Vote(String username, int votedAt, int totalVotes) {
+        this(username, votedAt);
+        this.totalVotes = totalVotes;
+    }
 
-        public void setUsername(String username) {
-                this.username = username;
-        }
+    public Vote(JSONObject jsonVote) {
+        this(jsonVote.getString("username"), jsonVote.getInt("voted_at"), jsonVote.getInt("total_votes"));
+    }
 
-        public void setTotalVotes(int totalVotes) {
-                this.totalVotes = totalVotes;
-        }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-        public void setVotedAt(int votedAt) {
-                this.votedAt = votedAt;
-        }
+    public void setTotalVotes(int totalVotes) {
+        this.totalVotes = totalVotes;
+    }
 
-        public void setRedeemed(boolean redeemed) {
-                this.redeemed = redeemed;
-        }
+    public void setVotedAt(int votedAt) {
+        this.votedAt = votedAt;
+    }
 
-        public int getTotalVotes() {
-                return totalVotes;
-        }
+    public void setRedeemed(boolean redeemed) {
+        this.redeemed = redeemed;
+    }
 
-        public int getVotedAt() {
-                return votedAt;
-        }
+    public int getTotalVotes() {
+        return totalVotes;
+    }
 
-        public boolean getRedeemed() {
-                return redeemed;
-        }
+    public int getVotedAt() {
+        return votedAt;
+    }
 
+    public boolean getRedeemed() {
+        return redeemed;
+    }
 
-        public String getUsername() {
-                return username;
-        }
+    public String getUsername() {
+        return username;
+    }
 
-        //
-        // METHODS
-        //
+    // Methods
+    public Vote getFromDB() {
+        return TrackerDB.getVote(this.username, this.votedAt);
+    }
 
-        public Vote getFromDB() {
-                return TrackerDB.getVote(this.username, this.votedAt);
-        }
+    public boolean isVoteExpired() {
+        return this.votedAt - System.currentTimeMillis() > ((60 * 60) * 24);
+    }
 
-        public boolean isVoteExpired() {
-                return this.votedAt - System.currentTimeMillis() > ((60 * 60) * 24);
-        }
+    public boolean existsInDB() {
+        return this.getFromDB() != null;
+    }
 
-        public boolean existsInDB() {
-                return this.getFromDB() != null;
-        }
+    public boolean isRedeemed() {
+        if (!this.existsInDB())
+            return false;
+        return this.getFromDB().getRedeemed();
+    }
 
-        public boolean isRedeemed() {
-                        if (!this.existsInDB())
-                                return false;
+    public void deleteFromDB() {
+        TrackerDB.deleteVote(this.username, this.votedAt);
+    }
 
-                        return this.getFromDB().getRedeemed();
-        }
+    public void insertToDB() {
+        TrackerDB.insertVote(this.username, this.votedAt, this.totalVotes);
+    }
 
-        public void deleteFromDB() {
-                TrackerDB.deleteVote(this.username, this.votedAt);
-        }
-
-        public void insertToDB() {
-                TrackerDB.insertVote(this.username, this.votedAt, this.totalVotes);
-        }
 }
