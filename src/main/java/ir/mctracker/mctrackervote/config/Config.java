@@ -16,6 +16,7 @@ public class Config {
     public static List<String> VOTE_MESSAGES;
     public static String NO_PERMISSION;
     public static List<String> REWARD_COMMANDS;
+    public static List<String> REWARD_MESSAGES;
 
     public static void initConfigValues() {
 
@@ -27,6 +28,7 @@ public class Config {
         VOTE_MESSAGES = cfg.getStringList("vote_messages");
         NO_PERMISSION = Util.colorize(cfg.getString("no_permission"));
         REWARD_COMMANDS = cfg.getStringList("reward_commands");
+        REWARD_MESSAGES = cfg.getStringList("reward_messages");
 
     }
 
