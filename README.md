@@ -9,41 +9,51 @@ Download the latest version from [releases](https://github.com/Alijkaz/MCTracker
 ## Config
 Don't forget to update your **server_id** in config.yml on first installation
 ```yaml
-# -----------------------------
-#        MCTrackerVote
-# -----------------------------
-#  =  Perms/Commands =
-# - /vote [ mctracker.commands.vote ]
-# -----------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                                                         # 
+#   __  __          _______                         _                   __      __          _             #
+#  |  \/  |        |__   __|                       | |                  \ \    / /         | |            #
+#  | \  / |   ___     | |     _ __    __ _    ___  | | __   ___   _ __   \ \  / /    ___   | |_    ___    #
+#  | |\/| |  / __|    | |    | '__|  / _` |  / __| | |/ /  / _ \ | '__|   \ \/ /    / _ \  | __|  / _ \   #
+#  | |  | | | (__     | |    | |    | (_| | | (__  |   <  |  __/ | |       \  /    | (_) | | |_  |  __/   #
+#  |_|  |_|  \___|    |_|    |_|     \__,_|  \___| |_|\_\  \___| |_|        \/      \___/   \__|  \___|   #
+#                                                                                                         #
+#                                                                                          v 1.0.0 - beta #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-# You can get your server id from IRMCTracker discord through ticket or our public API (If you know about it)
+
+# Permissions
+# /vote = mctracker.commands.vote
+
+# Your server ID
+# You can get your server ID from IRMCTracker discord through ticket or our public API (If you know about it)
 server_id: 0
 
 # Main plugin prefix
+# Set to "" for disabling prefix
 prefix: "&c&lMC&b&lVote &c&l»&r "
 
-# Commands that will get executed on player vote [ BUNGEE COMMANDS ARE NOT SUPPORTED FOR NOW ]
+# Commands that will get executed on player vote ( Bungee commands are not supported YET! )
 # Placeholders:
 #   - {player} = Player name
 reward_commands:
   - "me Player {player} be server vote dad!"
   - "give {player} apple 1"
 
-# Will send this message on execution of /vote
+# Will send this message when player executes '/vote' command
 # Placeholders:
 # - {vote_url} = Your unique vote URL based on  server_id that you set above
 # - {player} = Player name
 vote_messages:
-  - "&bSalam &9{player}"
-  - "&bBaraye vote dadan be server kafie ke vared link zir beshid"
-  - "&bhar 24 saat username khodetoon ro vared konid!"
-  - "&3Address: &3&l{vote_url}"
-  - "Ta jayze daryaft konid"
+  - "&bSalam &7{player}"
+  - "&bBaraye vote dadan be server bar rooye link zir click konid"
+  - "&3Link Vote : &e{vote_url}"
+  - "&bHar 24 saat yekbar mitonid vote bedid va jayeze begirid"
 
 # No permission message
-no_permission: "&c&lMC&b&lVote >> insufficient permissions"
+no_permission: "&c&lMC&b&lVote >> &cYou don't have permission."
 
-# Player vote check cycle in minutes [ DON'T TOUCH IF YOU DON'T KNOW WHAT YOU'RE DOING ]
+# Player vote check cycle in minutes ( Do not change it if you don't know what is this )
 cycle: 2
 ```
 ## Before using the plugin
