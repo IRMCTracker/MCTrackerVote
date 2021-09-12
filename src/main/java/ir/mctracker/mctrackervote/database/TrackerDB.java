@@ -23,7 +23,6 @@ public class TrackerDB {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-
             }
         });
     }
@@ -36,7 +35,6 @@ public class TrackerDB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void insertVote(String username, Integer votedAt, Integer totalVotes) {
@@ -50,7 +48,6 @@ public class TrackerDB {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
     }
 
     public static void redeemVote(String username) {
@@ -62,7 +59,6 @@ public class TrackerDB {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
     }
 
     public static void deleteVote(String username, Integer votedAt) {
@@ -75,7 +71,6 @@ public class TrackerDB {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
     }
 
     public static List<Vote> getUnredeemedVotes() {
@@ -97,7 +92,6 @@ public class TrackerDB {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
         return votes;
     }
 
@@ -121,7 +115,6 @@ public class TrackerDB {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
         return votes;
     }
 
@@ -145,7 +138,6 @@ public class TrackerDB {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
         return vote;
     }
 
@@ -158,6 +150,5 @@ public class TrackerDB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }

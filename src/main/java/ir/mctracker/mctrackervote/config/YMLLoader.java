@@ -24,7 +24,6 @@ public class YMLLoader {
 
         config = new YamlConfiguration();
         config.load(configFile);
-
     }
 
     public static void reloadConfig() {
@@ -35,7 +34,6 @@ public class YMLLoader {
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
-
     }
 
     public static FileConfiguration getConfig() {

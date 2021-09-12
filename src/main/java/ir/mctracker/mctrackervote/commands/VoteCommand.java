@@ -30,7 +30,6 @@ public class VoteCommand implements CommandExecutor {
                 sender.sendMessage(Config.NO_PERMISSION);
                 return true;
             }
-
         }
         return true;
     }

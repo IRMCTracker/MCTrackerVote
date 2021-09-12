@@ -27,7 +27,5 @@ public class Config {
         VOTE_MESSAGES = cfg.getStringList("vote_messages");
         NO_PERMISSION = Util.colorize(cfg.getString("no_permission"));
         REWARD_COMMANDS = cfg.getStringList("reward_commands");
-
     }
-
 }

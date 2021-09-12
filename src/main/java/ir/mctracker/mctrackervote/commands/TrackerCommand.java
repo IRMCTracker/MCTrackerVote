@@ -28,7 +28,6 @@ public class TrackerCommand implements CommandExecutor {
             sender.sendMessage(Util.colorize(Config.PREFIX + "Entered arg is not valid"));
             return true;
         }
-
         return true;
     }
 

@@ -15,5 +15,4 @@ public class Queries {
             "total_votes BIGINT NOT NULL," +
             "redeemed BOOLEAN NOT NULL" +
             ");";
-
 }
