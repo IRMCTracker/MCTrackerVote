@@ -32,7 +32,6 @@ public class Run {
             Util.sendToConsole("Failed To Load Config!");
             e.printStackTrace();
         }
-
     }
 
     public void handleSQL() {
@@ -44,7 +43,6 @@ public class Run {
             Util.sendToConsole("&cFailed to connect to Database!");
             e.printStackTrace();
         }
-
     }
 
     public void registerCommands() {
@@ -68,6 +66,5 @@ public class Run {
 
         // Log commands registration in console
         Util.sendToConsole("&bRegistering runnable");
-
     }
 }

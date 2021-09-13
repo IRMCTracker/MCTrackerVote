@@ -28,7 +28,6 @@ public class SQLDataSource {
         ds = new HikariDataSource(config);
         connection = ds.getConnection();
         TrackerDB.createTables();
-
     }
 
     private SQLDataSource() {

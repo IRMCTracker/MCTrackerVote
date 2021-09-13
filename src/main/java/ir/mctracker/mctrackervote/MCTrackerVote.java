@@ -11,17 +11,21 @@ public final class MCTrackerVote extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
         plugin = this;
+
         new Run(this).loadConfig();
+
         new Run(this).handleSQL();
+
         new Run(this).registerCommands();
+
         new Run(this).registerRunnable();
     }
 
     @Override
     public void onDisable() {
         plugin = null;
+
         TrackerDB.closeConnection();
     }
 

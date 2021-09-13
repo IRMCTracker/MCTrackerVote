@@ -29,7 +29,5 @@ public class Config {
         NO_PERMISSION = Util.colorize(cfg.getString("no_permission"));
         REWARD_COMMANDS = cfg.getStringList("reward_commands");
         REWARD_MESSAGES = cfg.getStringList("reward_messages");
-
     }
-
 }
