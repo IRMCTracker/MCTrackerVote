@@ -13,19 +13,19 @@ public class TrackerCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (args.length == 0) {
-            sender.sendMessage(Util.colorize(Config.PREFIX + "&bMCTrackerVote plugin By: &cCipher&b, &cAlijk"));
-            sender.sendMessage(Util.colorize(Config.PREFIX + "&bWebsite: &chttps://mctracker.ir"));
+            sender.sendMessage(Util.colorize(Config.PREFIX + "&a&lMCTrackerVote &aplugin By: &cCipher&7 & &cAlijk"));
+            sender.sendMessage(Util.colorize(Config.PREFIX + "&eWebsite: &bhttps://mctracker.ir"));
             return true;
         } else if (args.length == 1) {
             if (args[0].equalsIgnoreCase("reload")) {
                 if (sender.hasPermission("mctracker.commands.reload")) {
                     YMLLoader.reloadConfig();
-                    sender.sendMessage(Util.colorize(Config.PREFIX + "&bConfig reloaded successfully"));
+                    sender.sendMessage(Util.colorize(Config.PREFIX + "&aConfig Reloaded."));
                     return true;
                 }
             }
         } else {
-            sender.sendMessage(Util.colorize(Config.PREFIX + "Entered arg is not valid"));
+            sender.sendMessage(Util.colorize(Config.PREFIX + "&cEntered arg is Not Valid!"));
             return true;
         }
 

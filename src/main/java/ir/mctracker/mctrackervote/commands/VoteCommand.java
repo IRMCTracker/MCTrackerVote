@@ -13,7 +13,7 @@ public class VoteCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Util.colorize("&cThis command is only for players"));
+            sender.sendMessage(Util.colorize("&cError!, This Command is Only For Players!"));
             return true;
         }
 
