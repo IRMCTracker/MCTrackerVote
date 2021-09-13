@@ -50,4 +50,4 @@ vote_messages:
 no_permission: "&c&lMC&b&lVote >> &cYou don't have permission."
 
 # Player vote check cycle in minutes ( Do not change it if you don't know what is this )
-cycle: 2
+cycle: 1
