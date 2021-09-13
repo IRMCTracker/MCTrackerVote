@@ -15,13 +15,13 @@ public class FetchAPI extends BukkitRunnable {
             JSONArray apiResponse = null;
 
             if (Config.SERVER_ID == 0) {
-                    Util.sendToConsole("&bPlease set your &cserver_id &bcorrectly in &cconfig.yml &bthen do /tracker reload");
+                    Util.sendToConsole("&ePlease set your &cserver_id &ecorrectly in &cconfig.yml &ethen do /tracker reload");
                     doChecks = false;
             } else {
                     try {
                             apiResponse = new JSONArray(Util.getJSON(Config.API_ENDPOINT));
                     } catch (NullPointerException | JSONException ignored) {
-                            Util.sendToConsole("&cFailed to fetch API, Please check your network connectivity!");
+                            Util.sendToConsole("&cFailed to fetch API, Please Check Your Network Status!");
                             doChecks = false;
                     }
             }
