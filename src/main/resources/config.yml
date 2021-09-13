@@ -1,5 +1,5 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#                                                                                                         # 
+#                                                                                                         #
 #   __  __          _______                         _                   __      __          _             #
 #  |  \/  |        |__   __|                       | |                  \ \    / /         | |            #
 #  | \  / |   ___     | |     _ __    __ _    ___  | | __   ___   _ __   \ \  / /    ___   | |_    ___    #
@@ -7,47 +7,47 @@
 #  | |  | | | (__     | |    | |    | (_| | | (__  |   <  |  __/ | |       \  /    | (_) | | |_  |  __/   #
 #  |_|  |_|  \___|    |_|    |_|     \__,_|  \___| |_|\_\  \___| |_|        \/      \___/   \__|  \___|   #
 #                                                                                                         #
-#                                                                                          v 1.0.0 - beta #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
-# Permissions
-# /vote = mctracker.commands.vote
+# » Permissions «
+# "/vote - mctracker.commands.vote"
 
 # Your server ID
-# You can get your server ID from IRMCTracker discord through ticket or our public API (If you know about it)
+# You can get your server ID from IRMCTracker discord through ticket or our public API or McTracker.iR Website URL (If you know about it)
 server_id: 0
 
-# Main plugin prefix
+# Main plugin's Prefix
 # Set to "" for disabling prefix
-prefix: "&c&lMC&b&lVote &c&l»&r "
+prefix: "&a&lMCTRACKER &b&l»&r "
 
 # Will send this message when to player then player's vote was successful
 # Placeholders:
 # - {player} = Player name
 reward_messages:
-  - "&e{player} &bShoma vote dadid va jayeze gereftid!"
-  - "Dar 24 saat ayande mitavanid dobare vote bedid"
+  - "&a{player}&e, Shoma &bVote&e Dadid Va Jayeze Gereftid!"
+  - "&cDar 24 Saat Ayande Dobare Mitavanid &bVote &cDahid."
 
-# Commands that will get executed on player vote ( Bungee commands are not supported YET! )
-# Placeholders:
+# Commands that will get executed on player vote
+# ALERT: BUNGEECORD COMMANDS ARE NOT SUPPORTED YET!
+
+# » PlaceHolders «
 #   - {player} = Player name
 reward_commands:
   - "me Player {player} be server vote dad!"
   - "give {player} apple 1"
 
 # Will send this message when player executes '/vote' command
-# Placeholders:
+# » PlaceHolders «
 # - {vote_url} = Your unique vote URL based on  server_id that you set above
 # - {player} = Player name
 vote_messages:
-  - "&bSalam &7{player}"
-  - "&bBaraye vote dadan be server bar rooye link zir click konid"
-  - "&3Link Vote : &e{vote_url}"
-  - "&bHar 24 saat yekbar mitonid vote bedid va jayeze begirid"
+  - "&bHi &a{player}"
+  - "&eBaraye Vote Dadan Be Server Az Link Zir Estefade Konid &7(1 Vote per Day)"
+  - "&c{vote_url}"
 
 # No permission message
-no_permission: "&c&lMC&b&lVote >> &cYou don't have permission."
+no_permission: "&c&lMCTRACKER: &fError!, You don't have permission."
 
 # Player vote check cycle in minutes ( Do not change it if you don't know what is this )
 cycle: 1
