@@ -2,7 +2,7 @@
 
 IRMCTracker official plugin for handling player votes server-side
 
-## Installation
+## Downloads
 
 You can download the latest build from our [jenkins server](https://builds.alijk.ir/job/MCTrackerVote/) 
 
