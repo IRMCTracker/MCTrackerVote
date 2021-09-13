@@ -4,7 +4,9 @@ IRMCTracker official plugin for handling player votes server-side
 
 ## Installation
 
-Download the latest version from [releases](https://github.com/Alijkaz/MCTrackerVote/releases) or compile your own fork of plugin and put it in your server's ~/plugin folder 
+You can download the latest build from our [jenkins server](https://builds.alijk.ir/job/MCTrackerVote/) 
+
+Or obviously you can compile your own fork of plugin and put it in your server's ~/plugin folder 
 
 ## Config
 Don't forget to update your **server_id** in config.yml on first installation
