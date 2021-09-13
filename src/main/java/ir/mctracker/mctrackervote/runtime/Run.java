@@ -27,9 +27,9 @@ public class Run {
         try {
             YMLLoader.createConfig();
             Config.initConfigValues();
-            Util.sendToConsole("&bLoading config");
+            Util.sendToConsole("&bLoading Config");
         } catch (IOException | InvalidConfigurationException e) {
-            Util.sendToConsole("Failed to load config");
+            Util.sendToConsole("Failed To Load Config!");
             e.printStackTrace();
         }
 
@@ -39,9 +39,9 @@ public class Run {
 
         try {
             SQLDataSource.SQLite();
-            Util.sendToConsole("&bConnecting to database");
+            Util.sendToConsole("&aConnecting to Database!");
         } catch (SQLException | ClassNotFoundException | IOException e) {
-            Util.sendToConsole("&cFailed to connect to database");
+            Util.sendToConsole("&cFailed to connect to Database!");
             e.printStackTrace();
         }
 
@@ -54,7 +54,7 @@ public class Run {
         javaPlugin.getCommand("Vote").setExecutor(new VoteCommand());
 
         // Log commands registration in console
-        Util.sendToConsole("&bRegistering commands");
+        Util.sendToConsole("&aRegistering commands");
 
     }
 
