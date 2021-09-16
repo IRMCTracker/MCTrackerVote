@@ -1,5 +1,6 @@
 package ir.mctracker.mctrackervote.runtime;
 
+import ir.mctracker.mctrackervote.Listeners.PlayerJoinListener;
 import ir.mctracker.mctrackervote.commands.TrackerCommand;
 import ir.mctracker.mctrackervote.commands.VoteCommand;
 import ir.mctracker.mctrackervote.config.Config;
@@ -66,5 +67,9 @@ public class Run {
 
         // Log commands registration in console
         Util.sendToConsole("&bRegistering runnable");
+    }
+
+    public void registerListeners() {
+        javaPlugin.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), javaPlugin);
     }
 }

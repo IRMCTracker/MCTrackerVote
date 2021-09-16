@@ -77,7 +77,7 @@ https://discord.gg/YScSMwTFZq
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcomed. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 All rights are reserved and it is not Open Source or Free. You cannot modify or redistribute this code without explicit permission from the copyright holder
