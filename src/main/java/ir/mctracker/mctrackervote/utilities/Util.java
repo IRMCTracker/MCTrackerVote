@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Util {
 
@@ -21,6 +24,8 @@ public class Util {
     public static void sendToConsole(String message) {
         Bukkit.getConsoleSender().sendMessage(Config.PREFIX + Util.colorize(message));
     }
+
+    public static List<String> offlineVotedPlayers = new ArrayList<>();
 
     public static String getJSON(String url) {
 
