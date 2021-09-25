@@ -29,14 +29,29 @@ public class PlayerJoinListener implements Listener {
                         if (rewardReceiveEvent.isCancelled()) {
                             return;
                         }
-                        for (String s : Config.REWARD_COMMANDS) {
-                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), s.replace("{player}", event.getPlayer().getName()));
-                        }
-                        for (String s : Config.REWARD_MESSAGES) {
-                            event.getPlayer().sendMessage(Util.colorize(s).replace("{player}", event.getPlayer().getName()));
-                        }
-                    }
 
+                        for (String action : Config.REWARD_ACTIONS) {
+                            action = action.replace("{player}", event.getPlayer().getName());
+
+                            if (action.startsWith("[message]")) {
+                                event.getPlayer().sendMessage(
+                                        Util.colorize(
+                                                action.replace("[message]", "")
+                                        )
+                                );
+                            } else if (action.startsWith("[console]")) {
+                                Bukkit.dispatchCommand(
+                                        Bukkit.getConsoleSender(),
+                                        action.replace("[console]", "")
+                                );
+                            } else if (action.startsWith("[player]")) {
+                                event.getPlayer().performCommand(
+                                        action .replace("[player]", "")
+                                );
+                            }
+                        }
+
+                    }
                 }
             }, 20 * 5);
 

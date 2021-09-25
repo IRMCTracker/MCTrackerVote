@@ -15,8 +15,7 @@ public class Config {
     public static Integer CYCLE;
     public static List<String> VOTE_MESSAGES;
     public static String NO_PERMISSION;
-    public static List<String> REWARD_COMMANDS;
-    public static List<String> REWARD_MESSAGES;
+    public static List<String> REWARD_ACTIONS;
 
     public static void initConfigValues() {
 
@@ -27,7 +26,6 @@ public class Config {
         CYCLE = YMLLoader.getConfig().getInt("cycle");
         VOTE_MESSAGES = cfg.getStringList("vote_messages");
         NO_PERMISSION = Util.colorize(cfg.getString("no_permission"));
-        REWARD_COMMANDS = cfg.getStringList("reward_commands");
-        REWARD_MESSAGES = cfg.getStringList("reward_messages");
+        REWARD_ACTIONS = cfg.getStringList("reward_actions");
     }
 }

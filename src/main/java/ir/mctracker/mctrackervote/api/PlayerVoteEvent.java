@@ -15,7 +15,6 @@ public class PlayerVoteEvent extends Event {
         return null;
     }
 
-
     /** Creating an event.
      * @param player the player that voted
      */

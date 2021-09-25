@@ -18,7 +18,7 @@ public class RedeemRewards extends BukkitRunnable {
         List<Vote> votes = TrackerDB.getUnredeemedVotes();
 
         for (Vote vote : votes) {
-            Player player = Bukkit.getPlayer(vote.getUsername()); //saving UUID is better than saving username, because now Bukkit.getOfflinePlayer MAY cause a bit of lag
+            Player player = Bukkit.getPlayer(vote.getUsername()); //TODO saving UUID is better than saving username, because now Bukkit.getOfflinePlayer MAY cause a bit of lag
             if (player != null) {
                 PlayerVoteEvent voteEvent = new PlayerVoteEvent(Bukkit.getOfflinePlayer(player.getUniqueId()));
                 Bukkit.getPluginManager().callEvent(voteEvent);
@@ -27,13 +27,28 @@ public class RedeemRewards extends BukkitRunnable {
                 if (rewardReceiveEvent.isCancelled()) {
                     continue;
                 }
-                for (String s : Config.REWARD_COMMANDS) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), s.replace("{player}", player.getName()));
+
+                for (String action : Config.REWARD_ACTIONS) {
+                    action = action.replace("{player}", player.getName());
+
+                    if (action.startsWith("[message]")) {
+                        player.sendMessage(
+                                Util.colorize(
+                                        action.replace("[message]", "")
+                                )
+                        );
+                    } else if (action.startsWith("[console]")) {
+                        Bukkit.dispatchCommand(
+                                Bukkit.getConsoleSender(),
+                                action.replace("[console]", "")
+                        );
+                    } else if (action.startsWith("[player]")) {
+                        player.performCommand(
+                                action .replace("[player]", "")
+                        );
+                    }
                 }
 
-                for (String s : Config.REWARD_MESSAGES) {
-                    player.sendMessage(Util.colorize(s).replace("{player}", player.getName()));
-                }
                 TrackerDB.redeemVote(vote.getUsername());
             } else {
                 //so it is null, which means that player can possibly be offline or even doesn't exist in the server so lets check that

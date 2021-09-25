@@ -9,9 +9,13 @@
 #                                                                                                         #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+# You can find documentations in below url:
+# https://docs.mctracker.ir/mctrackervote-plugin/overview
+# If you have any problems/suggestions please contact us through our discord server
 
 # » Permissions «
 # "/vote - mctracker.commands.vote"
+# "/tracker reload - mctracker.commands.reload"
 
 # Your server ID
 # You can get your server ID from IRMCTracker discord through ticket or our public API or McTracker.iR Website URL (If you know about it)
@@ -21,21 +25,21 @@ server_id: 0
 # Set to "" for disabling prefix
 prefix: "&a&lMCTRACKER &b&l»&r "
 
-# Will send this message when to player then player's vote was successful
-# Placeholders:
-# - {player} = Player name
-reward_messages:
-  - "&a{player}&e, Shoma &bVote&e Dadid Va Jayeze Gereftid!"
-  - "&cDar 24 Saat Ayande Dobare Mitavanid &bVote &cDahid."
-
-# Commands that will get executed on player vote
+# Actions on player vote
 # ALERT: BUNGEECORD COMMANDS ARE NOT SUPPORTED YET!
-
+#
+# » Actions «
+#   - [console] = This command will be executed from console
+#   - [player] = This command will be executed from player
+#   - [message] = This message will be sent to player
+#
 # » PlaceHolders «
 #   - {player} = Player name
-reward_commands:
-  - "me Player {player} be server vote dad!"
-  - "give {player} apple 1"
+reward_actions:
+  - "[message] &a{player}&e, Shoma &bVote&e Dadid Va Jayeze Gereftid!"
+  - "[console] me Player {player} be server vote dad!"
+  - "[console] give {player} apple 1"
+
 
 # Will send this message when player executes '/vote' command
 # » PlaceHolders «
