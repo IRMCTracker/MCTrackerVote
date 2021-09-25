@@ -5,6 +5,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 public class PlayerVoteEvent extends Event {
+    private static final HandlerList handlers = new HandlerList();
 
     //When the server is attempting to give the reward to the player, which means the player vote is registered.
 
@@ -12,7 +13,7 @@ public class PlayerVoteEvent extends Event {
 
     @Override
     public HandlerList getHandlers() {
-        return null;
+        return handlers;
     }
 
     /** Creating an event.

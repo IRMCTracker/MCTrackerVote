@@ -6,6 +6,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 public class PlayerPreVoteEvent extends Event implements Cancellable {
+    private static final HandlerList handlers = new HandlerList();
 
     private boolean isCancelled = false;
     private Player player;
@@ -38,6 +39,6 @@ public class PlayerPreVoteEvent extends Event implements Cancellable {
 
     @Override
     public HandlerList getHandlers() {
-        return null;
+        return handlers;
     }
 }
