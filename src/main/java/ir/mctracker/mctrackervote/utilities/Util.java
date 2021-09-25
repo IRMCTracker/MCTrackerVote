@@ -25,8 +25,6 @@ public class Util {
         Bukkit.getConsoleSender().sendMessage(Config.PREFIX + Util.colorize(message));
     }
 
-    public static List<String> offlineVotedPlayers = new ArrayList<>();
-
     public static String getJSON(String url) {
 
         HttpsURLConnection con = null;

@@ -20,9 +20,7 @@ public final class MCTrackerVote extends JavaPlugin {
         new Run(this).registerCommands();
 
         new Run(this).registerRunnable();
-
-        new Run(this).registerListeners();
-
+        
     }
 
     @Override

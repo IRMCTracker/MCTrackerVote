@@ -18,7 +18,7 @@ public class RedeemRewards extends BukkitRunnable {
         List<Vote> votes = TrackerDB.getUnredeemedVotes();
 
         for (Vote vote : votes) {
-            Player player = Bukkit.getPlayer(vote.getUsername()); //TODO saving UUID is better than saving username, because now Bukkit.getOfflinePlayer MAY cause a bit of lag
+            Player player = Bukkit.getPlayer(vote.getUsername());
             if (player != null) {
                 PlayerVoteEvent voteEvent = new PlayerVoteEvent(Bukkit.getOfflinePlayer(player.getUniqueId()));
                 Bukkit.getPluginManager().callEvent(voteEvent);
@@ -40,24 +40,16 @@ public class RedeemRewards extends BukkitRunnable {
                     } else if (action.startsWith("[console]")) {
                         Bukkit.dispatchCommand(
                                 Bukkit.getConsoleSender(),
-                                action.replace("[console]", "").trim()
+                                Util.colorize(action.replace("[console]", "").trim())
                         );
                     } else if (action.startsWith("[player]")) {
                         player.performCommand(
-                                action .replace("[player]", "").trim()
+                                Util.colorize(action .replace("[player]", "").trim())
                         );
                     }
                 }
 
                 TrackerDB.redeemVote(vote.getUsername());
-            } else {
-                //so it is null, which means that player can possibly be offline or even doesn't exist in the server so lets check that
-                OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(vote.getUsername());
-                if (offlinePlayer.hasPlayedBefore()) {
-                    Util.offlineVotedPlayers.add(offlinePlayer.getName());
-                    PlayerVoteEvent voteEvent = new PlayerVoteEvent(Bukkit.getOfflinePlayer(offlinePlayer.getUniqueId()));
-                    Bukkit.getPluginManager().callEvent(voteEvent);
-                }
             }
         }
     }
