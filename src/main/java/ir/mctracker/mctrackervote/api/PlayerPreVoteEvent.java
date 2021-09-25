@@ -1,4 +1,4 @@
-package ir.mctracker.mctrackervote.API;
+package ir.mctracker.mctrackervote.api;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;

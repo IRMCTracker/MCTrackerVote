@@ -1,6 +1,6 @@
 package ir.mctracker.mctrackervote.Listeners;
 
-import ir.mctracker.mctrackervote.API.PlayerVoteRewardReceiveEvent;
+import ir.mctracker.mctrackervote.api.PlayerVoteRewardReceiveEvent;
 import ir.mctracker.mctrackervote.MCTrackerVote;
 import ir.mctracker.mctrackervote.config.Config;
 import ir.mctracker.mctrackervote.utilities.Util;

@@ -1,6 +1,6 @@
 package ir.mctracker.mctrackervote.commands;
 
-import ir.mctracker.mctrackervote.API.PlayerPreVoteEvent;
+import ir.mctracker.mctrackervote.api.PlayerPreVoteEvent;
 import ir.mctracker.mctrackervote.config.Config;
 import ir.mctracker.mctrackervote.utilities.Util;
 import org.bukkit.Bukkit;
