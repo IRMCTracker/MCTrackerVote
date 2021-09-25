@@ -23,7 +23,7 @@ Don't forget to update your **server_id** in config.yml on first installation
 #  | |  | | | (__     | |    | |    | (_| | | (__  |   <  |  __/ | |       \  /    | (_) | | |_  |  __/   #
 #  |_|  |_|  \___|    |_|    |_|     \__,_|  \___| |_|\_\  \___| |_|        \/      \___/   \__|  \___|   #
 #                                                                                                         #
-#                                                                                          v 1.4.0 - production #
+#                                                                         v 1.4.0 - production #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # You can find documentations in below url:
