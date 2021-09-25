@@ -34,17 +34,17 @@ public class RedeemRewards extends BukkitRunnable {
                     if (action.startsWith("[message]")) {
                         player.sendMessage(
                                 Util.colorize(
-                                        action.replace("[message]", "")
+                                        action.replace("[message]", "").trim()
                                 )
                         );
                     } else if (action.startsWith("[console]")) {
                         Bukkit.dispatchCommand(
                                 Bukkit.getConsoleSender(),
-                                action.replace("[console]", "")
+                                action.replace("[console]", "").trim()
                         );
                     } else if (action.startsWith("[player]")) {
                         player.performCommand(
-                                action .replace("[player]", "")
+                                action .replace("[player]", "").trim()
                         );
                     }
                 }
@@ -55,7 +55,7 @@ public class RedeemRewards extends BukkitRunnable {
                 OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(vote.getUsername());
                 if (offlinePlayer.hasPlayedBefore()) {
                     Util.offlineVotedPlayers.add(offlinePlayer.getName());
-                    PlayerVoteEvent voteEvent = new PlayerVoteEvent(Bukkit.getOfflinePlayer(player.getUniqueId()));
+                    PlayerVoteEvent voteEvent = new PlayerVoteEvent(Bukkit.getOfflinePlayer(offlinePlayer.getUniqueId()));
                     Bukkit.getPluginManager().callEvent(voteEvent);
                 }
             }
