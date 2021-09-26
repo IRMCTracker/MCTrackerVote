@@ -13,13 +13,17 @@ public final class MCTrackerVote extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
-        new Run(this).loadConfig();
+        Run run = new Run(this);
 
-        new Run(this).handleSQL();
+        run.loadConfig();
 
-        new Run(this).registerCommands();
+        run.handleSQL();
 
-        new Run(this).registerRunnable();
+        run.registerCommands();
+
+        run.registerRunnable();
+
+        run.registerMetrics();
         
     }
 

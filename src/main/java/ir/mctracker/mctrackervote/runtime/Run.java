@@ -7,6 +7,7 @@ import ir.mctracker.mctrackervote.config.YMLLoader;
 import ir.mctracker.mctrackervote.database.SQLDataSource;
 import ir.mctracker.mctrackervote.tasks.FetchAPI;
 import ir.mctracker.mctrackervote.tasks.RedeemRewards;
+import ir.mctracker.mctrackervote.utilities.Metrics;
 import ir.mctracker.mctrackervote.utilities.Util;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -66,6 +67,13 @@ public class Run {
 
         // Log commands registration in console
         Util.sendToConsole("&bRegistering runnables");
+    }
+
+    /**
+     * Registering bStats metrics
+     */
+    public void registerMetrics() {
+        Metrics metrics = new Metrics(javaPlugin, 12780);
     }
 
 }
