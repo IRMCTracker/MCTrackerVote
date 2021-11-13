@@ -23,7 +23,9 @@ server_id: 0
 
 # Main plugin's Prefix
 # Set to "" for disabling prefix
-prefix: "&a&lMCTRACKER &b&l»&r "
+prefix: "&bMCTRACKER &c»&r "
+
+splash_screen: true
 
 # Actions on player vote
 # ALERT: BUNGEECORD COMMANDS ARE NOT SUPPORTED YET!
@@ -46,12 +48,28 @@ reward_actions:
 # - {vote_url} = Your unique vote URL based on  server_id that you set above
 # - {player} = Player name
 vote_messages:
-  - "&bHi &a{player}"
-  - "&eBaraye Vote Dadan Be Server Az Link Zir Estefade Konid &7(1 Vote per Day)"
-  - "&c{vote_url}"
+  - "&7------[&bMCTrackerVote&7]------"
+  - "&5&l* &5Salam &b{player}"
+  - "&5&l* &4Age mikhay javaiez va item hai khafan begiri"
+  - "&5&l* &4Az link zir be serveremon rai bede ke hemayateto neshon bedi"
+  - "&5&l* &7Link: &b&l{vote_url}"
+  - "&7---------------------------"
+
+#Message for admins when there is an update available
+update_available_message:
+  - "{prefix} &bNew Update available."
 
 # No permission message
-no_permission: "&c&lMCTRACKER: &fError!, You don't have permission."
+no_permission: "{prefix}&fError!, You don't have permission."
 
 # Player vote check cycle in minutes ( Do not change it if you don't know what is this )
 cycle: 1
+
+#Check for updates?
+check_updates: true
+#Update check cycle in minutes
+update_cycle: 60
+
+#This Option is for servers with lower resources available for them
+#This will cause the plugin to redeem specified amount of players at a time
+Row_Limit: 10

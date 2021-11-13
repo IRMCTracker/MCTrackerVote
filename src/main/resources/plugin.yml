@@ -21,3 +21,4 @@ permissions:
     children:
       mctracker.commands.reload: true
       mctracker.commands.vote: true
+      mctracker.events.update: true

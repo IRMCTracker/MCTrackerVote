@@ -15,7 +15,7 @@ import java.util.List;
 public class RedeemRewards extends BukkitRunnable {
     @Override
     public void run() {
-        List<Vote> votes = TrackerDB.getUnredeemedVotes();
+        List<Vote> votes = TrackerDB.getUnredeemedVotes(Config.ROWLIMIT);
 
         for (Vote vote : votes) {
             Player player = Bukkit.getPlayer(vote.getUsername());

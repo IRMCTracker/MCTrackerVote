@@ -6,7 +6,7 @@
 
     <groupId>ir.mctracker</groupId>
     <artifactId>MCTrackerVote</artifactId>
-    <version>1.4.0</version>
+    <version>1.5.0</version>
     <packaging>jar</packaging>
 
     <name>MCTrackerVote</name>
@@ -72,7 +72,6 @@
             <version>1.13.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>

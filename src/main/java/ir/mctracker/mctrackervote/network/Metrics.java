@@ -1,4 +1,4 @@
-package ir.mctracker.mctrackervote.utilities;
+package ir.mctracker.mctrackervote.network;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;

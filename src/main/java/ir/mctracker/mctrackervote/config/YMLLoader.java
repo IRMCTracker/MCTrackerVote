@@ -12,6 +12,7 @@ public class YMLLoader {
 
     private static File configFile;
     private static FileConfiguration config;
+    public static boolean cfgLoaded = configFile.exists();
 
     public static void createConfig() throws IOException, InvalidConfigurationException {
 

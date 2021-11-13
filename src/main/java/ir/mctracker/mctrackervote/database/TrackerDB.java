@@ -73,13 +73,14 @@ public class TrackerDB {
         }
     }
 
-    public static List<Vote> getUnredeemedVotes() {
+    public static List<Vote> getUnredeemedVotes(int rowLimit) {
 
         List<Vote> votes = new ArrayList<>();
 
         try {
             Connection con = SQLDataSource.getConnection();
             PreparedStatement pst = con.prepareStatement(Queries.SELECT_UNREDEEMED_VOTES);
+            pst.setInt(1,rowLimit);
             ResultSet rs = pst.executeQuery();
             Vote vote;
             while (rs.next()) {
@@ -139,6 +140,10 @@ public class TrackerDB {
             exception.printStackTrace();
         }
         return vote;
+    }
+
+    public static boolean hasVotedBefore(String name) {
+        return false;
     }
 
     public static void closeConnection() {

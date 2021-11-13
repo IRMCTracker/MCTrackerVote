@@ -22,7 +22,7 @@ public class Util {
     }
 
     public static void sendToConsole(String message) {
-        Bukkit.getConsoleSender().sendMessage(Config.PREFIX + Util.colorize(message));
+        Bukkit.getConsoleSender().sendMessage(Util.colorize(message));
     }
 
     public static String getJSON(String url) {
