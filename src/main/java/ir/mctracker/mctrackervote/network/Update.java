@@ -35,7 +35,7 @@ public class Update implements Listener {
 
         if (player.hasPermission("mctracker.events.update")) {
             for (String s : Config.UPDATE_AVAILABLE_MESSAGES) {
-                player.sendMessage(Util.colorize(s));
+                player.sendMessage(Util.colorize(s.replace("{prefix}", Config.PREFIX)));
             }
         }
     }
