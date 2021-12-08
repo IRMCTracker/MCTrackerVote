@@ -15,6 +15,8 @@ public final class MCTrackerVote extends JavaPlugin {
 
         Run run = new Run(this);
 
+        run.splashScreen();
+
         run.loadConfig();
 
         run.handleSQL();
