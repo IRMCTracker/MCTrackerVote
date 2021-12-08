@@ -10,7 +10,6 @@ import ir.mctracker.mctrackervote.tasks.FetchAPI;
 import ir.mctracker.mctrackervote.tasks.RedeemRewards;
 import ir.mctracker.mctrackervote.network.Metrics;
 import ir.mctracker.mctrackervote.utilities.Util;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,13 +19,14 @@ import java.sql.SQLException;
 public class Run {
 
 	private JavaPlugin javaPlugin;
+	private YMLLoader loader = new YMLLoader();
 
 	public Run(JavaPlugin javaPlugin) {
 		this.javaPlugin = javaPlugin;
 	}
 
 	public void splashScreen() {
-		if (YMLLoader.cfgLoaded) {
+		if (loader.cfgLoaded) {
 			if (Config.SPLASHSCREEN) {
 				Util.sendToConsole("                                                           ");
 				Util.sendToConsole("  __  __  ___ _____            _         __   __   _       ");
