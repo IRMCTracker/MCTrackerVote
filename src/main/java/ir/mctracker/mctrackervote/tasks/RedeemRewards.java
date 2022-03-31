@@ -8,14 +8,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class RedeemRewards extends BukkitRunnable {
     @Override
     public void run() {
-        List<Vote> votes = TrackerDB.getUnredeemedVotes();
-
-        for (Vote vote : votes) {
+        for (Vote vote : Vote.getUnredeemed()) {
             Player player = Bukkit.getPlayer(vote.getUsername());
             if (player != null) {
                 PlayerVoteEvent voteEvent = new PlayerVoteEvent(Bukkit.getOfflinePlayer(player.getUniqueId()));
@@ -47,7 +46,11 @@ public class RedeemRewards extends BukkitRunnable {
                     }
                 }
 
-                TrackerDB.redeemVote(vote.getUsername());
+                try {
+                    vote.redeem();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

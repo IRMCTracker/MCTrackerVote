@@ -30,14 +30,14 @@ public class FetchAPI extends BukkitRunnable {
             for (int i = 0; i < apiResponse.length(); ++i) {
                 Vote vote = new Vote(apiResponse.getJSONObject(i));
 
-                boolean exists = vote.existsInDB();
+                boolean exists = vote.fetch();
 
                 if (!exists) {
-                    vote.insertToDB();
+                    vote.create();
                 }
 
-                if (vote.isVoteExpired()) {
-                    vote.deleteFromDB();
+                if (vote.isExpired()) {
+                    vote.delete();
                 }
             }
         }

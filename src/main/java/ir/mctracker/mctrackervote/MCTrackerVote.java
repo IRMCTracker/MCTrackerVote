@@ -19,18 +19,20 @@ public final class MCTrackerVote extends MegaPlugin {
 
     @Override
     public void onPluginEnable() {
-
         // Setup configuration files
         getConfigManager().register(Storage.class);
         getConfigManager().register(Config.class);
         getConfigManager().register(Messages.class);
 
+        // Register commands
         register("tracker", new TrackerCommand());
         register("vote", new VoteCommand());
 
+        // Booting tasks
         new FetchAPI().runTaskTimerAsynchronously(getInstance(), 0, Config.CYCLE);
         new RedeemRewards().runTaskTimer(getInstance(), 0, Config.CYCLE / 4);
 
+        // Setting up metrics
         new Metrics(getInstance(), 12780);
     }
 
