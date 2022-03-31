@@ -30,7 +30,7 @@ public class TrackerDB {
     public static void createTables() {
 
         try {
-            final Statement statement = SQLDataSource.getConnection().createStatement();
+            final Statement statement = DataSource.getConnection().createStatement();
             statement.execute(Queries.CREATE_VOTES_TABLE);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class TrackerDB {
     public static void insertVote(String username, Integer votedAt, Integer totalVotes) {
 
         try {
-            PreparedStatement pst = SQLDataSource.getConnection().prepareStatement(Queries.INSERT_VOTE);
+            PreparedStatement pst = DataSource.getConnection().prepareStatement(Queries.INSERT_VOTE);
             pst.setString(1, username);
             pst.setInt(2, votedAt);
             pst.setInt(3, totalVotes);
@@ -53,7 +53,7 @@ public class TrackerDB {
     public static void redeemVote(String username) {
 
         try {
-            PreparedStatement pst = SQLDataSource.getConnection().prepareStatement(Queries.REDEEM_VOTE);
+            PreparedStatement pst = DataSource.getConnection().prepareStatement(Queries.REDEEM_VOTE);
             pst.setString(1, username);
             executeQueryAsync(pst);
         } catch (SQLException exception) {
@@ -64,7 +64,7 @@ public class TrackerDB {
     public static void deleteVote(String username, Integer votedAt) {
 
         try {
-            PreparedStatement pst = SQLDataSource.getConnection().prepareStatement(Queries.DELETE_VOTE);
+            PreparedStatement pst = DataSource.getConnection().prepareStatement(Queries.DELETE_VOTE);
             pst.setString(1, username);
             pst.setInt(2, votedAt);
             executeQueryAsync(pst);
@@ -78,7 +78,7 @@ public class TrackerDB {
         List<Vote> votes = new ArrayList<>();
 
         try {
-            Connection con = SQLDataSource.getConnection();
+            Connection con = DataSource.getConnection();
             PreparedStatement pst = con.prepareStatement(Queries.SELECT_UNREDEEMED_VOTES);
             ResultSet rs = pst.executeQuery();
             Vote vote;
@@ -100,7 +100,7 @@ public class TrackerDB {
         List<Vote> votes = new ArrayList<>();
 
         try {
-            Connection con = SQLDataSource.getConnection();
+            Connection con = DataSource.getConnection();
             PreparedStatement pst = con.prepareStatement(Queries.SELECT_ALL_VOTES);
             ResultSet rs = pst.executeQuery();
             votes = new ArrayList<>();
@@ -123,7 +123,7 @@ public class TrackerDB {
         Vote vote = null;
 
         try {
-            Connection con = SQLDataSource.getConnection();
+            Connection con = DataSource.getConnection();
             PreparedStatement pst = con.prepareStatement(Queries.SELECT_VOTE);
             pst.setString(1, username);
             pst.setInt(2, votedAt);
@@ -146,7 +146,7 @@ public class TrackerDB {
         Util.sendToConsole("&cClosing DB Connection");
 
         try {
-            SQLDataSource.getConnection().close();
+            DataSource.getConnection().close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

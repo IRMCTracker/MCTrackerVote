@@ -1,18 +1,17 @@
 package ir.mctracker.mctrackervote;
 
+import ir.jeykey.megacore.MegaPlugin;
 import ir.mctracker.mctrackervote.database.TrackerDB;
 import ir.mctracker.mctrackervote.runtime.Run;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class MCTrackerVote extends JavaPlugin {
+import java.util.Optional;
 
-    private static Plugin plugin;
+public final class MCTrackerVote extends MegaPlugin {
 
     @Override
-    public void onEnable() {
-        plugin = this;
-
+    public void onPluginEnable() {
         Run run = new Run(this);
 
         run.loadConfig();
@@ -28,14 +27,8 @@ public final class MCTrackerVote extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
-        plugin = null;
-
+    public void onPluginDisable() {
         TrackerDB.closeConnection();
-    }
-
-    public static Plugin getInst() {
-        return plugin;
     }
 
 }
