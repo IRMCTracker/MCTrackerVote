@@ -1,17 +1,28 @@
 package ir.mctracker.mctrackervote.database.models;
 
-import ir.mctracker.mctrackervote.database.TrackerDB;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.json.JSONObject;
 
+@DatabaseTable(tableName = "mctracker_votes") @Getter @Setter @NoArgsConstructor
 public class Vote {
+    @DatabaseField(columnName = "id", generatedId = true)
+    private int id;
 
+    @DatabaseField(canBeNull = false)
     private String username;
-    private int votedAt, totalVotes;
+
+    @DatabaseField(canBeNull = false)
+    private int votedAt;
+
+    @DatabaseField(canBeNull = false)
+    private int totalVotes;
+
+    @DatabaseField(canBeNull = false)
     private boolean redeemed;
-
-    public Vote() {
-
-    }
 
     public Vote(String username) {
         this.username = username;
@@ -31,37 +42,6 @@ public class Vote {
         this(jsonVote.getString("username"), jsonVote.getInt("voted_at"), jsonVote.getInt("total_votes"));
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setTotalVotes(int totalVotes) {
-        this.totalVotes = totalVotes;
-    }
-
-    public void setVotedAt(int votedAt) {
-        this.votedAt = votedAt;
-    }
-
-    public void setRedeemed(boolean redeemed) {
-        this.redeemed = redeemed;
-    }
-
-    public int getTotalVotes() {
-        return totalVotes;
-    }
-
-    public int getVotedAt() {
-        return votedAt;
-    }
-
-    public boolean getRedeemed() {
-        return redeemed;
-    }
-
-    public String getUsername() {
-        return username;
-    }
 
     // Methods
     public Vote getFromDB() {
@@ -79,7 +59,7 @@ public class Vote {
     public boolean isRedeemed() {
         if (!this.existsInDB())
             return false;
-        return this.getFromDB().getRedeemed();
+        return this.getFromDB().isRedeemed();
     }
 
     public void deleteFromDB() {

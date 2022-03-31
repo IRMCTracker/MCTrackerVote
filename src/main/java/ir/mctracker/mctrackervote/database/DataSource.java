@@ -4,7 +4,9 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import ir.jeykey.megacore.config.premade.Storage;
 import ir.mctracker.mctrackervote.MCTrackerVote;
+import ir.mctracker.mctrackervote.database.models.Vote;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +16,7 @@ public class DataSource {
 
     private static ConnectionSource connectionSource;
 
-    public static void SQLite() throws SQLException, IOException, ClassNotFoundException {
+    public static void SQLite() throws SQLException, IOException {
         File file = new File(MCTrackerVote.getInstance().getDataFolder(), "data.db");
         if (!file.exists()) file.createNewFile();
 
@@ -34,8 +36,8 @@ public class DataSource {
     }
 
     public static void setupTables() throws SQLException {
-        MegaReports.setReportsDao(DaoManager.createDao(connectionSource, Report.class));
-        TableUtils.createTableIfNotExists(connectionSource, Report.class);
+        MCTrackerVote.setVotesDao(DaoManager.createDao(connectionSource, Vote.class));
+        TableUtils.createTableIfNotExists(connectionSource, Vote.class);
     }
 
     public static ConnectionSource getConnection() {

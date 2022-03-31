@@ -19,7 +19,7 @@ public class FetchAPI extends BukkitRunnable {
             doChecks = false;
         } else {
             try {
-                apiResponse = new JSONArray(Util.getJSON(Config.API_ENDPOINT));
+                apiResponse = new JSONArray(Util.fetchJson(Config.API_ENDPOINT));
             } catch (NullPointerException | JSONException ignored) {
                 Util.sendToConsole("&cFailed to fetch API, Please check your network connectivity!");
                 doChecks = false;
