@@ -93,6 +93,7 @@ public class Vote {
                 setUsername(vote.getUsername());
                 setVotedAt(vote.getVotedAt());
                 setRedeemed(vote.isRedeemed());
+                return true;
             } else {
                 return false;
             }
