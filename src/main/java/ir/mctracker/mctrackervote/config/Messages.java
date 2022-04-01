@@ -34,7 +34,7 @@ public class Messages extends Configurable {
 
     private String format(String text) {
         return Util.colorize(
-                text.replace("%prefix%", PREFIX != null ? PREFIX : "")
+                text.replace("{prefix}", PREFIX != null ? PREFIX : "")
         );
     }
 }

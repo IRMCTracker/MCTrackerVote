@@ -1,4 +1,5 @@
 package ir.mctracker.mctrackervote.tasks;
+
 import ir.mctracker.mctrackervote.api.PlayerVoteEvent;
 import ir.mctracker.mctrackervote.api.PlayerVoteRewardReceiveEvent;
 import ir.mctracker.mctrackervote.config.Config;
@@ -9,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.SQLException;
-import java.util.List;
 
 public class RedeemRewards extends BukkitRunnable {
     @Override
@@ -42,6 +42,12 @@ public class RedeemRewards extends BukkitRunnable {
                     } else if (action.startsWith("[player]")) {
                         player.performCommand(
                                 Util.colorize(action .replace("[player]", "").trim())
+                        );
+                    } else if (action.startsWith("[broadcast]")) {
+                        Bukkit.getServer().broadcastMessage(
+                                Util.colorize(
+                                        action.replace("[message]", "").trim()
+                                )
                         );
                     }
                 }

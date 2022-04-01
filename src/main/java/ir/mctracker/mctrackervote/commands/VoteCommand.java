@@ -29,7 +29,7 @@ public class VoteCommand implements CommandExecutor {
         }
 
         if (args.length == 0) {
-            if (sender.hasPermission(VOTE_PERMISSION)) {
+            if (sender.hasPermission(VOTE_PERMISSION) || !Config.VOTE_NEEDS_PERMISSION) {
                 for (String s : Messages.VOTE_MESSAGES) {
                     sender.sendMessage(Util.colorize(s.replace("{player}", p.getName()).replace("{vote_url}", Config.VOTE_URL)));
                 }
