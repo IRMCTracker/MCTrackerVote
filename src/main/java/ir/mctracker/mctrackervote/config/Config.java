@@ -1,31 +1,32 @@
 package ir.mctracker.mctrackervote.config;
 
+import ir.jeykey.megacore.MegaPlugin;
+import ir.jeykey.megacore.config.Configurable;
 import ir.mctracker.mctrackervote.utilities.Util;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.List;
 
-public class Config {
+public class Config extends Configurable {
 
-    public static FileConfiguration cfg = YMLLoader.getConfig();
     public static Integer SERVER_ID;
+    public static boolean VOTE_NEEDS_PERMISSION;
     public static String VOTE_URL;
     public static String API_ENDPOINT;
-    public static String PREFIX;
     public static Integer CYCLE;
-    public static List<String> VOTE_MESSAGES;
-    public static String NO_PERMISSION;
     public static List<String> REWARD_ACTIONS;
 
-    public static void initConfigValues() {
+    public Config(MegaPlugin instance) {
+        super(instance, "config.yml");
+    }
 
-        SERVER_ID = cfg.getInt("server_id");
+    @Override
+    public void init() {
+        SERVER_ID = getConfig().getInt("server-id");
+        VOTE_NEEDS_PERMISSION = getConfig().getBoolean("vote-needs-permission");
         VOTE_URL = "https://mctracker.ir/server/" + SERVER_ID + "/vote";
         API_ENDPOINT = "https://mctracker.ir/api/server/" + SERVER_ID + "/votes";
-        PREFIX = Util.colorize(cfg.getString("prefix"));
-        CYCLE = YMLLoader.getConfig().getInt("cycle");
-        VOTE_MESSAGES = cfg.getStringList("vote_messages");
-        NO_PERMISSION = Util.colorize(cfg.getString("no_permission"));
-        REWARD_ACTIONS = cfg.getStringList("reward_actions");
+        CYCLE = getConfig().getInt("cycle") * 60 * 20;
+        REWARD_ACTIONS = getConfig().getStringList("reward-actions");
     }
 }

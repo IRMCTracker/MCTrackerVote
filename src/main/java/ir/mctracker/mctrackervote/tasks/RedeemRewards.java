@@ -1,23 +1,20 @@
 package ir.mctracker.mctrackervote.tasks;
+
 import ir.mctracker.mctrackervote.api.PlayerVoteEvent;
 import ir.mctracker.mctrackervote.api.PlayerVoteRewardReceiveEvent;
 import ir.mctracker.mctrackervote.config.Config;
-import ir.mctracker.mctrackervote.database.TrackerDB;
 import ir.mctracker.mctrackervote.database.models.Vote;
 import ir.mctracker.mctrackervote.utilities.Util;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.List;
+import java.sql.SQLException;
 
 public class RedeemRewards extends BukkitRunnable {
     @Override
     public void run() {
-        List<Vote> votes = TrackerDB.getUnredeemedVotes();
-
-        for (Vote vote : votes) {
+        for (Vote vote : Vote.getUnredeemed()) {
             Player player = Bukkit.getPlayer(vote.getUsername());
             if (player != null) {
                 PlayerVoteEvent voteEvent = new PlayerVoteEvent(Bukkit.getOfflinePlayer(player.getUniqueId()));
@@ -46,10 +43,20 @@ public class RedeemRewards extends BukkitRunnable {
                         player.performCommand(
                                 Util.colorize(action .replace("[player]", "").trim())
                         );
+                    } else if (action.startsWith("[broadcast]")) {
+                        Bukkit.getServer().broadcastMessage(
+                                Util.colorize(
+                                        action.replace("[broadcast]", "").trim()
+                                )
+                        );
                     }
                 }
 
-                TrackerDB.redeemVote(vote.getUsername());
+                try {
+                    vote.redeem();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

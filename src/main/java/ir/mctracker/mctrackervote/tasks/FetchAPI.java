@@ -19,7 +19,7 @@ public class FetchAPI extends BukkitRunnable {
             doChecks = false;
         } else {
             try {
-                apiResponse = new JSONArray(Util.getJSON(Config.API_ENDPOINT));
+                apiResponse = new JSONArray(Util.fetchJson(Config.API_ENDPOINT));
             } catch (NullPointerException | JSONException ignored) {
                 Util.sendToConsole("&cFailed to fetch API, Please check your network connectivity!");
                 doChecks = false;
@@ -30,14 +30,14 @@ public class FetchAPI extends BukkitRunnable {
             for (int i = 0; i < apiResponse.length(); ++i) {
                 Vote vote = new Vote(apiResponse.getJSONObject(i));
 
-                boolean exists = vote.existsInDB();
+                boolean exists = vote.fetch();
 
                 if (!exists) {
-                    vote.insertToDB();
+                    vote.create();
                 }
 
-                if (vote.isVoteExpired()) {
-                    vote.deleteFromDB();
+                if (vote.isExpired()) {
+                    vote.delete();
                 }
             }
         }

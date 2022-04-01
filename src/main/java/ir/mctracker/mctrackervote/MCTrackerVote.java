@@ -1,41 +1,69 @@
 package ir.mctracker.mctrackervote;
 
-import ir.mctracker.mctrackervote.database.TrackerDB;
-import ir.mctracker.mctrackervote.runtime.Run;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
+import com.j256.ormlite.dao.Dao;
+import ir.jeykey.megacore.MegaPlugin;
+import ir.jeykey.megacore.config.premade.Storage;
+import ir.mctracker.mctrackervote.commands.TrackerCommand;
+import ir.mctracker.mctrackervote.commands.VoteCommand;
+import ir.mctracker.mctrackervote.config.Config;
+import ir.mctracker.mctrackervote.config.Messages;
+import ir.mctracker.mctrackervote.database.DataSource;
+import ir.mctracker.mctrackervote.database.models.Vote;
+import ir.mctracker.mctrackervote.tasks.FetchAPI;
+import ir.mctracker.mctrackervote.tasks.RedeemRewards;
+import ir.mctracker.mctrackervote.utilities.Metrics;
+import lombok.Getter;
+import lombok.Setter;
 
-public final class MCTrackerVote extends JavaPlugin {
+import java.io.IOException;
+import java.sql.SQLException;
 
-    private static Plugin plugin;
+public final class MCTrackerVote extends MegaPlugin {
+    @Getter @Setter private static Dao<Vote,String> votesDao;
 
     @Override
-    public void onEnable() {
-        plugin = this;
+    public void onPluginEnable() {
+        // Setup configuration files
+        getConfigManager().register(Storage.class);
+        getConfigManager().register(Config.class);
+        getConfigManager().register(Messages.class);
 
-        Run run = new Run(this);
+        // Setting up datasource
+        try {
+            if (Storage.LOCATION.equalsIgnoreCase("sqlite")) {
+                DataSource.SQLite();
+            } else if (Storage.LOCATION.equalsIgnoreCase("mysql")) {
+                DataSource.MySQL();
+            } else {
+                disablePlugin( "&cStorage type defined in config (" + Storage.LOCATION + ") is not valid!");
+                return;
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            disablePlugin( "&cPlugin could not work with database! [ Check Stack Trace For More Information ]");
+            return;
+        }
+        catch (IOException exception) {
+            exception.printStackTrace();
+            disablePlugin("&cPlugin is unable to create database file, Please check directory permissions [ Check Stack Trace For More Information ]");
+            return;
+        }
 
-        run.loadConfig();
+        // Register commands
+        register("tracker", new TrackerCommand());
+        register("vote", new VoteCommand());
 
-        run.handleSQL();
+        // Booting tasks
+        new FetchAPI().runTaskTimerAsynchronously(getInstance(), 0, Config.CYCLE);
+        new RedeemRewards().runTaskTimer(getInstance(), 0, Config.CYCLE / 2);
 
-        run.registerCommands();
-
-        run.registerRunnable();
-
-        run.registerMetrics();
-        
+        // Setting up metrics
+        new Metrics(getInstance(), 12780);
     }
 
     @Override
-    public void onDisable() {
-        plugin = null;
+    public void onPluginDisable() {
 
-        TrackerDB.closeConnection();
-    }
-
-    public static Plugin getInst() {
-        return plugin;
     }
 
 }

@@ -1,6 +1,6 @@
 package ir.mctracker.mctrackervote.utilities;
 
-import ir.mctracker.mctrackervote.config.Config;
+import ir.mctracker.mctrackervote.config.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
@@ -11,9 +11,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class Util {
 
@@ -22,11 +19,10 @@ public class Util {
     }
 
     public static void sendToConsole(String message) {
-        Bukkit.getConsoleSender().sendMessage(Config.PREFIX + Util.colorize(message));
+        Bukkit.getConsoleSender().sendMessage(Messages.PREFIX + Util.colorize(message));
     }
 
-    public static String getJSON(String url) {
-
+    public static String fetchJson(String url) {
         HttpsURLConnection con = null;
 
         try {
