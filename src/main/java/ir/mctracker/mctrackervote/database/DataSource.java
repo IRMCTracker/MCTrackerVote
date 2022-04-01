@@ -7,13 +7,14 @@ import com.j256.ormlite.table.TableUtils;
 import ir.jeykey.megacore.config.premade.Storage;
 import ir.mctracker.mctrackervote.MCTrackerVote;
 import ir.mctracker.mctrackervote.database.models.Vote;
+import lombok.Getter;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class DataSource {
-
+    @Getter
     private static ConnectionSource connectionSource;
 
     public static void SQLite() throws SQLException, IOException {
@@ -38,10 +39,6 @@ public class DataSource {
     public static void setupTables() throws SQLException {
         MCTrackerVote.setVotesDao(DaoManager.createDao(connectionSource, Vote.class));
         TableUtils.createTableIfNotExists(connectionSource, Vote.class);
-    }
-
-    public static ConnectionSource getConnection() {
-        return connectionSource;
     }
 
 }
