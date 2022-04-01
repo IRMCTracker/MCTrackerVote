@@ -46,7 +46,7 @@ public class RedeemRewards extends BukkitRunnable {
                     } else if (action.startsWith("[broadcast]")) {
                         Bukkit.getServer().broadcastMessage(
                                 Util.colorize(
-                                        action.replace("[message]", "").trim()
+                                        action.replace("[broadcast]", "").trim()
                                 )
                         );
                     }

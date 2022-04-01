@@ -55,7 +55,7 @@ public final class MCTrackerVote extends MegaPlugin {
 
         // Booting tasks
         new FetchAPI().runTaskTimerAsynchronously(getInstance(), 0, Config.CYCLE);
-        new RedeemRewards().runTaskTimer(getInstance(), 0, Config.CYCLE / 4);
+        new RedeemRewards().runTaskTimer(getInstance(), 0, Config.CYCLE / 2);
 
         // Setting up metrics
         new Metrics(getInstance(), 12780);
