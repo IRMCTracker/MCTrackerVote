@@ -17,7 +17,9 @@ Tested MineCraft Version
    - Paper 1.12.2 (Java 1.8 / Java 1.11)
    - Paper 1.13.2 (Java 1.11)
    - Paper 1.16.5 (Java 1.11)
-   - Paper 1.17.1 (Java 1.16)
+   - Paper 1.17.1 (Java 1.16/1.17)
+   - Paper 1.18.2 (Java 1.18)
+   - Paper 1.19.2/1.19.3 (Java 1.18)
 
 ## You have any issuess / suggestions??
 
