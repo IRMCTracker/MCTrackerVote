@@ -21,7 +21,7 @@ Tested MineCraft Version
    - Paper 1.18.2 (Java 1.18)
    - Paper 1.19.2/1.19.3 (Java 1.18)
 
-## You have any issuess / suggestions??
+## You have any issues / suggestions??
 
 We're always here to solve your problems or convert your ideas into codes! You can create issues on our official Github Repo or contact us through our discord server
 
