@@ -1,6 +1,6 @@
 package ir.mctracker.core.utilities;
 
-import ir.mctracker.mctrackervote.config.Messages;
+import ir.mctracker.core.config.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
