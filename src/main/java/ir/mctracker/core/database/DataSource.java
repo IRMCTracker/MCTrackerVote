@@ -1,12 +1,12 @@
-package ir.mctracker.mctrackervote.database;
+package ir.mctracker.core.database;
 
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import ir.jeykey.megacore.config.premade.Storage;
-import ir.mctracker.mctrackervote.MCTrackerVote;
-import ir.mctracker.mctrackervote.database.models.Vote;
+import ir.mctracker.core.MCTrackerVote;
+import ir.mctracker.core.database.models.Vote;
 import lombok.Getter;
 
 import java.io.File;
