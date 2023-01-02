@@ -92,7 +92,7 @@
             <artifactId>json</artifactId>
             <version>20220924</version>
         </dependency>
-        <dependency>
+       <dependency>
             <groupId>com.github.Alijkaz</groupId>
             <artifactId>MegaCore</artifactId>
             <version>440a3cc</version>

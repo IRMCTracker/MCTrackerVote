@@ -1,4 +1,4 @@
-package ir.mctracker.mctrackervote.api;
+package ir.mctracker.api;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.event.Event;

@@ -1,8 +1,8 @@
-package ir.mctracker.mctrackervote.config;
+package ir.mctracker.core.config;
 
 import ir.jeykey.megacore.MegaPlugin;
 import ir.jeykey.megacore.config.Configurable;
-import ir.mctracker.mctrackervote.utilities.Util;
+import ir.mctracker.core.utilities.Util;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.List;
