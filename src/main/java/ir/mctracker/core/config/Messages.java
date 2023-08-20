@@ -5,7 +5,6 @@ import ir.jeykey.megacore.config.Configurable;
 import ir.mctracker.core.utilities.Util;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Messages extends Configurable {

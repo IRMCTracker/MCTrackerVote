@@ -10,20 +10,22 @@ public class PlayerVoteEvent extends Event {
     //When the server is attempting to give the reward to the player, which means the player vote is registered.
     private OfflinePlayer player;
 
-    @Override
-    public HandlerList getHandlers() {
-        return handlers;
+    /**
+     * Creating an event.
+     *
+     * @param player the player that voted
+     */
+    public PlayerVoteEvent(OfflinePlayer player) {
+        this.player = player;
     }
 
     public static HandlerList getHandlerList() {
         return handlers;
     }
 
-    /** Creating an event.
-     * @param player the player that voted
-     */
-    public PlayerVoteEvent(OfflinePlayer player) {
-        this.player = player;
+    @Override
+    public HandlerList getHandlers() {
+        return handlers;
     }
 
     /**

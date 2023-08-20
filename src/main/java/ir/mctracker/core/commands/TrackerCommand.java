@@ -1,7 +1,6 @@
 package ir.mctracker.core.commands;
 
 import ir.mctracker.core.MCTrackerVote;
-import ir.mctracker.core.config.Config;
 import ir.mctracker.core.config.Messages;
 import ir.mctracker.core.utilities.Util;
 import org.bukkit.command.Command;

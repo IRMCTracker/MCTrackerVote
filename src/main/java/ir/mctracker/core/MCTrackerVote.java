@@ -19,7 +19,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public final class MCTrackerVote extends MegaPlugin {
-    @Getter @Setter private static Dao<Vote,String> votesDao;
+    @Getter
+    @Setter
+    private static Dao<Vote, String> votesDao;
 
     @Override
     public void onPluginEnable() {
@@ -35,15 +37,14 @@ public final class MCTrackerVote extends MegaPlugin {
             } else if (Storage.LOCATION.equalsIgnoreCase("mysql")) {
                 DataSource.MySQL();
             } else {
-                disablePlugin( "&cStorage type defined in config (" + Storage.LOCATION + ") is not valid!");
+                disablePlugin("&cStorage type defined in config (" + Storage.LOCATION + ") is not valid!");
                 return;
             }
         } catch (SQLException exception) {
             exception.printStackTrace();
-            disablePlugin( "&cPlugin could not work with database! [ Check Stack Trace For More Information ]");
+            disablePlugin("&cPlugin could not work with database! [ Check Stack Trace For More Information ]");
             return;
-        }
-        catch (IOException exception) {
+        } catch (IOException exception) {
             exception.printStackTrace();
             disablePlugin("&cPlugin is unable to create database file, Please check directory permissions [ Check Stack Trace For More Information ]");
             return;
