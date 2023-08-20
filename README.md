@@ -24,6 +24,7 @@ Tested MineCraft Version
 - Paper 1.17.1 (Java 1.16/1.17)
 - Paper 1.18.2 (Java 1.18)
 - Paper 1.19.4 (Java 1.18)
+- Paper 1.20.1 (Java 1.18) (Purpur recommended.)
 
 ## You have any issues / suggestions??
 
