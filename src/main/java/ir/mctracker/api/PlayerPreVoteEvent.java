@@ -12,7 +12,6 @@ public class PlayerPreVoteEvent extends Event implements Cancellable {
     private Player player;
 
     /**
-     *
      * @param player the online player that is trying to vote (does not mean he voted!)
      */
     public PlayerPreVoteEvent(Player player) {
@@ -20,7 +19,6 @@ public class PlayerPreVoteEvent extends Event implements Cancellable {
     }
 
     /**
-     *
      * @return returns the player that is trying to vote
      */
     public Player getPlayer() {

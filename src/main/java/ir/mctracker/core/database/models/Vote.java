@@ -11,7 +11,10 @@ import org.json.JSONObject;
 import java.sql.SQLException;
 import java.util.*;
 
-@DatabaseTable(tableName = "mctracker_votes") @Getter @Setter @NoArgsConstructor
+@DatabaseTable(tableName = "mctracker_votes")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Vote {
     @DatabaseField(columnName = "id", generatedId = true)
     private int id;
@@ -44,12 +47,33 @@ public class Vote {
         setRedeemed(redeemed);
     }
 
+    public static List<Vote> all() {
+        try {
+            return MCTrackerVote
+                    .getVotesDao()
+                    .queryBuilder()
+                    .orderBy("id", false)
+                    .query();
+        } catch (SQLException ignored) {
+            return new ArrayList<>();
+        }
+    }
+
+    public static List<Vote> getUnredeemed() {
+        try {
+            return MCTrackerVote
+                    .getVotesDao()
+                    .queryForEq("redeemed", false);
+        } catch (SQLException ignored) {
+            return new ArrayList<>();
+        }
+    }
+
     public boolean isExpired() {
         return this.votedAt - System.currentTimeMillis() > ((60 * 60) * 24);
     }
 
-    public boolean delete()
-    {
+    public boolean delete() {
         try {
             MCTrackerVote.getVotesDao().delete(this);
             return true;
@@ -101,27 +125,5 @@ public class Vote {
             e.printStackTrace();
         }
         return false;
-    }
-
-    public static List<Vote> all() {
-        try {
-            return MCTrackerVote
-                    .getVotesDao()
-                    .queryBuilder()
-                    .orderBy("id", false)
-                    .query();
-        } catch (SQLException ignored) {
-            return new ArrayList<>();
-        }
-    }
-
-    public static List<Vote> getUnredeemed() {
-        try {
-            return MCTrackerVote
-                    .getVotesDao()
-                    .queryForEq("redeemed", false);
-        } catch (SQLException ignored) {
-            return new ArrayList<>();
-        }
     }
 }

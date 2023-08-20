@@ -41,7 +41,7 @@ public class RedeemRewards extends BukkitRunnable {
                         );
                     } else if (action.startsWith("[player]")) {
                         player.performCommand(
-                                Util.colorize(action .replace("[player]", "").trim())
+                                Util.colorize(action.replace("[player]", "").trim())
                         );
                     } else if (action.startsWith("[broadcast]")) {
                         Bukkit.getServer().broadcastMessage(
