@@ -20,11 +20,11 @@ public class Messages extends Configurable {
 
     @Override
     public void init() {
-        PREFIX = format(getConfig().getString("prefix"));
-        VOTE_MESSAGES = format(getConfig().getStringList("vote-messages"));
-        NO_PERMISSION = format(getConfig().getString("no-permission"));
-        CONSOLE_NOT_ALLOWED = format(getConfig().getString("console-not-allowed"));
-        INVALID_ARG = format(getConfig().getString("invalid-arg"));
+        PREFIX = format(Configurable.getConfig().getString("prefix"));
+        VOTE_MESSAGES = format(Configurable.getConfig().getStringList("vote-messages"));
+        NO_PERMISSION = format(Configurable.getConfig().getString("no-permission"));
+        CONSOLE_NOT_ALLOWED = format(Configurable.getConfig().getString("console-not-allowed"));
+        INVALID_ARG = format(Configurable.getConfig().getString("invalid-arg"));
     }
 
     private List<String> format(List<String> texts) {

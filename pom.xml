@@ -7,9 +7,14 @@
     <groupId>ir.mctracker</groupId>
     <artifactId>MCTrackerVote</artifactId>
     <version>2.2.0</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>MCTrackerVote</name>
+
+    <modules>
+        <module>MCTracker</module>
+        <module>plugin-api</module>
+    </modules>
 
     <description>https://mctracker.ir/ vote handling plugin</description>
     <properties>
