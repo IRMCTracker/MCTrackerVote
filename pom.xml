@@ -6,14 +6,14 @@
 
     <groupId>ir.mctracker</groupId>
     <artifactId>MCTrackerVote</artifactId>
-    <version>2.2.0</version>
+    <version>2.3.0</version>
     <packaging>pom</packaging>
 
     <name>MCTrackerVote</name>
 
     <modules>
-        <module>MCTracker</module>
-        <module>plugin-api</module>
+        <module>tracker-plugin</module>
+        <module>tracker-api</module>
     </modules>
 
     <description>https://mctracker.ir/ vote handling plugin</description>
