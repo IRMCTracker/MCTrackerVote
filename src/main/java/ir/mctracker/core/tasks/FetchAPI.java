@@ -1,8 +1,8 @@
-package ir.mctracker.mctrackervote.tasks;
+package ir.mctracker.core.tasks;
 
-import ir.mctracker.mctrackervote.config.Config;
-import ir.mctracker.mctrackervote.database.models.Vote;
-import ir.mctracker.mctrackervote.utilities.Util;
+import ir.mctracker.core.config.Config;
+import ir.mctracker.core.database.models.Vote;
+import ir.mctracker.core.utilities.Util;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.json.JSONArray;
 import org.json.JSONException;

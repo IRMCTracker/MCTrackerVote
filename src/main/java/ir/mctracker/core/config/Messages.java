@@ -1,11 +1,10 @@
-package ir.mctracker.mctrackervote.config;
+package ir.mctracker.core.config;
 
 import ir.jeykey.megacore.MegaPlugin;
 import ir.jeykey.megacore.config.Configurable;
-import ir.mctracker.mctrackervote.utilities.Util;
+import ir.mctracker.core.utilities.Util;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Messages extends Configurable {
