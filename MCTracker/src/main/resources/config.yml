@@ -1,0 +1,46 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                                                         #
+#   __  __          _______                         _                   __      __          _             #
+#  |  \/  |        |__   __|                       | |                  \ \    / /         | |            #
+#  | \  / |   ___     | |     _ __    __ _    ___  | | __   ___   _ __   \ \  / /    ___   | |_    ___    #
+#  | |\/| |  / __|    | |    | '__|  / _` |  / __| | |/ /  / _ \ | '__|   \ \/ /    / _ \  | __|  / _ \   #
+#  | |  | | | (__     | |    | |    | (_| | | (__  |   <  |  __/ | |       \  /    | (_) | | |_  |  __/   #
+#  |_|  |_|  \___|    |_|    |_|     \__,_|  \___| |_|\_\  \___| |_|        \/      \___/   \__|  \___|   #
+#                                                                                                         #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# You can find documentations in below url:
+# https://docs.mctracker.ir/mctrackervote-plugin/overview
+# If you have any problems/suggestions please contact us through our discord server
+
+# » Permissions «
+# "/vote - mctracker.commands.vote"
+# "/tracker reload - mctracker.commands.reload"
+
+# Your server ID
+# You can get your server ID from IRMCTracker discord through ticket or our public API or McTracker.iR Website URL (If you know about it)
+server-id: 0
+
+# Does voting and doing /vote need permission? If the option is true
+# the player should have mctracker.commands.vote permission to use vote
+vote-needs-permission: false
+
+# Actions on player vote
+# ALERT: BUNGEECORD COMMANDS ARE NOT SUPPORTED YET!
+#
+# » Actions «
+#   - [console] = This command will be executed from console
+#   - [player] = This command will be executed from player
+#   - [message] = This message will be sent to player
+#   - [broadcast] = The message will be broadcasted for the whole server
+#
+# » PlaceHolders «
+#   - {player} = Player name
+reward-actions:
+  - "[message] &a{player}&e, Shoma &bVote&e Dadid Va Jayeze Gereftid!"
+  - "[broadcast] &2{player} &abe server vote dad!"
+  - "[console] give {player} apple 1"
+
+
+# Player vote check cycle in minutes ( Do not change it if you don't know what is this )
+cycle: 1

@@ -1,0 +1,4 @@
+name: plugin-api
+version: '${project.version}'
+main: ir.mctracker.api.API
+api-version: '1.20'
