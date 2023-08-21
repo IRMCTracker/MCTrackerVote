@@ -8,7 +8,7 @@ public class PlayerVoteEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
     //When the server is attempting to give the reward to the player, which means the player vote is registered.
-    private OfflinePlayer player;
+    private final OfflinePlayer player;
 
     /**
      * Creating an event.

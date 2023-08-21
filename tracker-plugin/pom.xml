@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>ir.mctracker</groupId>
+        <artifactId>MCTrackerVote</artifactId>
+        <version>2.3.0</version>
+    </parent>
+
     <groupId>ir.mctracker</groupId>
-    <artifactId>MCTrackerVote</artifactId>
-    <version>2.3.0</version>
-    <packaging>pom</packaging>
+    <artifactId>tracker-plugin</artifactId>
+    <version>${project.parent.version}</version>
+    <packaging>jar</packaging>
 
     <name>MCTrackerVote</name>
 
-    <modules>
-        <module>tracker-plugin</module>
-        <module>tracker-api</module>
-    </modules>
-
-    <description>https://mctracker.ir/ vote handling plugin</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <url>https://mctracker.ir/</url>
 
     <build>
         <plugins>
@@ -61,6 +60,10 @@
 
     <repositories>
         <repository>
+            <id>spigotmc-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
@@ -71,6 +74,12 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.20.1-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -91,6 +100,11 @@
             <groupId>com.github.Alijkaz</groupId>
             <artifactId>MegaCore</artifactId>
             <version>440a3cc</version>
+        </dependency>
+        <dependency>
+            <groupId>ir.mctracker</groupId>
+            <artifactId>tracker-api</artifactId>
+            <version>2.3.0</version>
         </dependency>
     </dependencies>
 </project>

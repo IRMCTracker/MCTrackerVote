@@ -20,11 +20,11 @@ public class Config extends Configurable {
 
     @Override
     public void init() {
-        SERVER_ID = getConfig().getInt("server-id");
-        VOTE_NEEDS_PERMISSION = getConfig().getBoolean("vote-needs-permission");
+        SERVER_ID = Configurable.getConfig().getInt("server-id");
+        VOTE_NEEDS_PERMISSION = Configurable.getConfig().getBoolean("vote-needs-permission");
         VOTE_URL = "https://mctracker.ir/server/" + SERVER_ID + "/vote";
         API_ENDPOINT = "https://mctracker.ir/api/server/" + SERVER_ID + "/votes";
-        CYCLE = getConfig().getInt("cycle") * 60 * 20;
-        REWARD_ACTIONS = getConfig().getStringList("reward-actions");
+        CYCLE = Configurable.getConfig().getInt("cycle") * 60 * 20;
+        REWARD_ACTIONS = Configurable.getConfig().getStringList("reward-actions");
     }
 }

@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class VoteCommand implements CommandExecutor {
-    private String VOTE_PERMISSION = "mctracker.commands.vote";
+    private final String VOTE_PERMISSION = "mctracker.commands.vote";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
