@@ -26,7 +26,7 @@ Tested MineCraft Version
 - Paper 1.19.4 (Java 1.18)
 - Paper 1.20.1 (Java 1.18) (Purpur recommended.)
 
-** It's recommended to use LTS Versions of Java (8/11/17) as they are stable.
+ It's recommended to use LTS Versions of Java (8/11/17) as they are stable.
 
 ## You have any issues / suggestions??
 
