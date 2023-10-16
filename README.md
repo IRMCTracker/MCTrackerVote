@@ -17,7 +17,7 @@ please contact us via discord tickers.
 
 Tested MineCraft Version
 
-- Paper 1.8.8 (Java 1.8 / Java 1.11)
+- Paper 1.8.8 (Java 1.8 (Outdated) /Java 1.11)
 - CarbonSpigot 1.8.8 (Java 1.11/1.17)
 - Paper 1.12.2 (Java 1.8 / Java 1.11)
 - Paper 1.13.2 (Java 1.11)
@@ -27,7 +27,8 @@ Tested MineCraft Version
 - Paper 1.19.4 (Java 1.18)
 - Paper 1.20.1 (Java 1.18) (Purpur recommended.)
 
- It's recommended to use LTS Versions of Java (8/11/17) as they are stable.
+ It's recommended to use LTS Versions of Java (11/17) as they are stable.
+ Removed Java 8 as an outdated version, Unsupported.
 
 ## You have any issues / suggestions??
 
