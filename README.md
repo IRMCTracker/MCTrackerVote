@@ -18,6 +18,7 @@ please contact us via discord tickers.
 Tested MineCraft Version
 
 - Paper 1.8.8 (Java 1.8 / Java 1.11)
+- CarbonSpigot 1.8.8 (Java 1.11/1.17)
 - Paper 1.12.2 (Java 1.8 / Java 1.11)
 - Paper 1.13.2 (Java 1.11)
 - Paper 1.16.5 (Java 1.11)
