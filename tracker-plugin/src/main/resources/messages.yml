@@ -15,14 +15,14 @@ vote-messages:
 # No permission message
 # » PlaceHolders «
 # - {prefix} = Plugin prefix specified above
-no-permission: "{prefix}&cShoma dastresi kafi baraye inkar nadarid :("
+no-permission: "{prefix}&cShoma Dastresi Kafi Baraye Ejraye In Dastoor Ro Nadarid."
 
 # Console is not allowed to run this command message
 # » PlaceHolders «
 # - {prefix} = Plugin prefix specified above
-console-not-allowed: "{prefix}&cIn command faghat baraye player hast mojaz hast"
+console-not-allowed: "{prefix}&cIn Command Baraye Player Hast."
 
 # Will be sent when arguments are invalid
 # » PlaceHolders «
 # - {prefix} = Plugin prefix specified above
-invalid-arg: "{prefix}&cCommand vared shode motabar nist"
+invalid-arg: "{prefix}&cIn Dastoor Vojod Nadarad."
