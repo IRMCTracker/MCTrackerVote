@@ -1,7 +1,8 @@
 package ir.mctracker.core.commands;
 
+import ir.mctracker.MCTrackerVote;
 import ir.mctracker.api.PlayerPreVoteEvent;
-import ir.mctracker.core.config.Config;
+import ir.mctracker.core.config.Configuration;
 import ir.mctracker.core.config.Messages;
 import ir.mctracker.core.utilities.Util;
 import org.bukkit.Bukkit;
@@ -12,11 +13,18 @@ import org.bukkit.entity.Player;
 
 public class VoteCommand implements CommandExecutor {
     private final String VOTE_PERMISSION = "mctracker.commands.vote";
+    private Configuration config;
+    private Messages messages;
+
+    public VoteCommand(Configuration config, Messages messages) {
+        this.config = config;
+        this.messages = messages;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Messages.CONSOLE_NOT_ALLOWED);
+            sender.sendMessage(Messages.getString("console-not-allowed"));
             return true;
         }
 
@@ -29,12 +37,12 @@ public class VoteCommand implements CommandExecutor {
         }
 
         if (args.length == 0) {
-            if (sender.hasPermission(VOTE_PERMISSION) || !Config.VOTE_NEEDS_PERMISSION) {
-                for (String s : Messages.VOTE_MESSAGES) {
-                    sender.sendMessage(Util.colorize(s.replace("{player}", p.getName()).replace("{vote_url}", Config.VOTE_URL)));
+            if (sender.hasPermission(VOTE_PERMISSION) || !config.isVoteNeedsPermission()) {
+                for (String s : Messages.getStringList("vote-messages")) {
+                    sender.sendMessage(Util.colorize(s.replace("{player}", p.getName()).replace("{vote_url}", MCTrackerVote.config.getVoteUrl())));
                 }
             } else {
-                sender.sendMessage(Messages.NO_PERMISSION);
+                sender.sendMessage(Messages.getString("no-permission"));
             }
         }
         return true;

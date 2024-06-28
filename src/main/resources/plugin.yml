@@ -1,6 +1,6 @@
 name: MCTrackerVote
 version: '${project.version}'
-main: ir.mctracker.core.MCTrackerVote
+main: ir.mctracker.MCTrackerVote
 api-version: 1.13
 authors: [ Cipher, Alijk, TheWylot, GitUsers ]
 description: https://mctracker.ir/ vote handling plugin

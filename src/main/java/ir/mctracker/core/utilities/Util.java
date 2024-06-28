@@ -19,7 +19,7 @@ public class Util {
     }
 
     public static void sendToConsole(String message) {
-        Bukkit.getConsoleSender().sendMessage(Messages.PREFIX + Util.colorize(message));
+        Bukkit.getConsoleSender().sendMessage(Messages.getString("prefix") + Util.colorize(message));
     }
 
     public static String fetchJson(String url) {

@@ -1,6 +1,6 @@
 package ir.mctracker.core.tasks;
 
-import ir.mctracker.core.config.Config;
+import ir.mctracker.MCTrackerVote;
 import ir.mctracker.core.database.models.Vote;
 import ir.mctracker.core.utilities.Util;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -14,12 +14,12 @@ public class FetchAPI extends BukkitRunnable {
 
         JSONArray apiResponse = null;
 
-        if (Config.SERVER_ID == 0) {
+        if (MCTrackerVote.config.getServerId() == 0) {
             Util.sendToConsole("&bPlease set your &cserver_id &bcorrectly in &cconfig.yml &bthen do /tracker reload");
             doChecks = false;
         } else {
             try {
-                apiResponse = new JSONArray(Util.fetchJson(Config.API_ENDPOINT));
+                apiResponse = new JSONArray(Util.fetchJson(MCTrackerVote.config.getApiEndpoint()));
             } catch (NullPointerException | JSONException ignored) {
                 Util.sendToConsole("&cFailed to fetch API, Please check your network connectivity!");
                 doChecks = false;

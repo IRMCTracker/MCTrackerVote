@@ -1,8 +1,8 @@
 package ir.mctracker.core.tasks;
 
+import ir.mctracker.MCTrackerVote;
 import ir.mctracker.api.PlayerVoteEvent;
 import ir.mctracker.api.PlayerVoteRewardReceiveEvent;
-import ir.mctracker.core.config.Config;
 import ir.mctracker.core.database.models.Vote;
 import ir.mctracker.core.utilities.Util;
 import org.bukkit.Bukkit;
@@ -25,7 +25,7 @@ public class RedeemRewards extends BukkitRunnable {
                     continue;
                 }
 
-                for (String action : Config.REWARD_ACTIONS) {
+                for (String action : MCTrackerVote.config.getRewardActions()) {
                     action = action.replace("{player}", player.getName());
 
                     if (action.startsWith("[message]")) {
