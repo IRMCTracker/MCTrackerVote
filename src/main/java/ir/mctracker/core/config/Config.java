@@ -1,4 +1,4 @@
-package ir.mctracker.config;
+package ir.mctracker.core.config;
 
 import ir.jeykey.megacore.MegaPlugin;
 import ir.jeykey.megacore.config.Configurable;

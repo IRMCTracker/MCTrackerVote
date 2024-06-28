@@ -1,9 +1,9 @@
-package ir.mctracker.commands;
+package ir.mctracker.core.commands;
 
 import ir.mctracker.api.PlayerPreVoteEvent;
-import ir.mctracker.config.Config;
-import ir.mctracker.config.Messages;
-import ir.mctracker.utilities.Util;
+import ir.mctracker.core.config.Config;
+import ir.mctracker.core.config.Messages;
+import ir.mctracker.core.utilities.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
