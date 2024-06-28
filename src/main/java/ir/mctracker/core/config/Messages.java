@@ -1,39 +1,54 @@
 package ir.mctracker.core.config;
 
-import ir.jeykey.megacore.MegaPlugin;
-import ir.jeykey.megacore.config.Configurable;
-import ir.mctracker.core.utilities.Util;
+import org.bukkit.configuration.file.YamlConfiguration;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Messages extends Configurable {
-    public static String PREFIX;
-    public static List<String> VOTE_MESSAGES;
-    public static String NO_PERMISSION;
-    public static String CONSOLE_NOT_ALLOWED;
-    public static String INVALID_ARG;
+public class Messages {
 
-    public Messages(MegaPlugin instance) {
-        super(instance, "messages.yml");
+    public static File messagesFile = new File("plugins/MCTracker/messages.yml");
+    public static YamlConfiguration messages;
+
+    public static void loadConfig() {
+        addDefaults();
     }
 
-    @Override
-    public void init() {
-        PREFIX = format(Configurable.getConfig().getString("prefix"));
-        VOTE_MESSAGES = format(Configurable.getConfig().getStringList("vote-messages"));
-        NO_PERMISSION = format(Configurable.getConfig().getString("no-permission"));
-        CONSOLE_NOT_ALLOWED = format(Configurable.getConfig().getString("console-not-allowed"));
-        INVALID_ARG = format(Configurable.getConfig().getString("invalid-arg"));
+    public static void reloadConfig() {
+        messages = YamlConfiguration.loadConfiguration(messagesFile);
     }
 
-    private List<String> format(List<String> texts) {
-        return texts.stream().map(this::format).collect(Collectors.toList());
+    public static void addDefaults() {
+        messages = YamlConfiguration.loadConfiguration(messagesFile);
+
+        // Messages File
+        messages.addDefault("prefix", "&2[&aVote&2] ");
+        messages.addDefault("vote-messages", Arrays.asList(
+                "&bSalam &3{player}",
+                "&bBaraye Vote Dadan Be Server Az Link Zir Estefade Konid &7(1 Vote per Day)",
+                "&a{vote_url}"
+        ));
+        messages.addDefault("no-permission", "{prefix}&cShoma Dastresi Kafi Baraye Ejraye In Dastoor Ro Nadarid.");
+        messages.addDefault("console-not-allowed", "{prefix}&cIn Command Baraye Player Hast.");
+        messages.addDefault("invalid-arg", "{prefix}&cIn Dastoor Vojod Nadarad.");
+
+        messages.options().copyDefaults(true);
+        try {
+            messages.save(messagesFile);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+
+        messages = YamlConfiguration.loadConfiguration(messagesFile);
     }
 
-    private String format(String text) {
-        return Util.colorize(
-                text.replace("{prefix}", PREFIX != null ? PREFIX : "")
-        );
+    public static String getString(String key) {
+        return messages.getString(key);
+    }
+
+    public static List<String> getStringList(String key) {
+        return messages.getStringList(key);
     }
 }
