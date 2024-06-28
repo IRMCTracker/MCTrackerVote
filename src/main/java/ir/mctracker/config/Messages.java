@@ -1,8 +1,8 @@
-package ir.mctracker.core.config;
+package ir.mctracker.config;
 
 import ir.jeykey.megacore.MegaPlugin;
 import ir.jeykey.megacore.config.Configurable;
-import ir.mctracker.core.utilities.Util;
+import ir.mctracker.utilities.Util;
 
 import java.util.List;
 import java.util.stream.Collectors;

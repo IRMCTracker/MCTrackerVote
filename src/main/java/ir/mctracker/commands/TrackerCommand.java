@@ -1,8 +1,8 @@
-package ir.mctracker.core.commands;
+package ir.mctracker.commands;
 
-import ir.mctracker.core.MCTrackerVote;
-import ir.mctracker.core.config.Messages;
-import ir.mctracker.core.utilities.Util;
+import ir.mctracker.MCTrackerVote;
+import ir.mctracker.config.Messages;
+import ir.mctracker.utilities.Util;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

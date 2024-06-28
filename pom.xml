@@ -6,15 +6,10 @@
 
     <groupId>ir.mctracker</groupId>
     <artifactId>MCTrackerVote</artifactId>
-    <version>2.3.1</version>
-    <packaging>pom</packaging>
+    <version>3.0.0</version>
+    <packaging>jar</packaging>
 
     <name>MCTrackerVote</name>
-
-    <modules>
-        <module>tracker-plugin</module>
-        <module>tracker-api</module>
-    </modules>
 
     <description>https://mctracker.ir/ vote handling plugin</description>
     <properties>
@@ -71,6 +66,12 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.20.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

@@ -1,10 +1,10 @@
-package ir.mctracker.core.tasks;
+package ir.mctracker.tasks;
 
+import ir.mctracker.config.Config;
 import ir.mctracker.api.PlayerVoteEvent;
 import ir.mctracker.api.PlayerVoteRewardReceiveEvent;
-import ir.mctracker.core.config.Config;
-import ir.mctracker.core.database.models.Vote;
-import ir.mctracker.core.utilities.Util;
+import ir.mctracker.database.models.Vote;
+import ir.mctracker.utilities.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;

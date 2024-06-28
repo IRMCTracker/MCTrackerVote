@@ -1,4 +1,4 @@
-package ir.mctracker.core.utilities;
+package ir.mctracker.utilities;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
